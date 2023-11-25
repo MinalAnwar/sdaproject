@@ -8,6 +8,8 @@ import java.sql.*;
 
 public class AccountDao {
     public boolean checkCredentials(String username, String password) {
+        System.out.println(username);
+        System.out.println(password);
         Database dataAccess = new Database();
         try (Connection connection = dataAccess.getConnection()) {
             String credentialCheker = "{ CALL CheckCredentials(?, ?, ?) }"; // make a sql statement for the procedure call
