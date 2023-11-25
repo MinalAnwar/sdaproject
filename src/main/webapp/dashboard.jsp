@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="com.erp.Database.Database" %>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -23,8 +26,8 @@
 	<div class="main-wrapper">
 		<div class="header">
 			<div class="header-left">
-				<b><a href="index.html" class="logo"> <span class="logoclass">ERP</span> </a></b>
-				<b><a href="index.html" class="logo logo-small" style="font-size: large; color:#009688;">ERP</a></b>
+				<b><a href="dashboard.jsp" class="logo"> <span class="logoclass">ERP</span> </a></b>
+				<b><a href="dashboard.jsp" class="logo logo-small" style="font-size: large; color:#009688;">ERP</a></b>
 			</div>
 			<a href="javascript:void(0);" id="toggle_btn"> <i class="fe fe-text-align-left"></i> </a>
 			<a class="mobile_btn" id="mobile_btn"> <i class="fas fa-bars"></i> </a>
@@ -39,7 +42,7 @@
 								<h6>Soeng Souy</h6>
 								<p class="text-muted mb-0">Administrator</p>
 							</div>
-						</div> <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="login.html">Logout</a></div>
+						</div> <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="./index.jsp">Logout</a></div>
 				</li>
 			</ul>
 		
@@ -48,31 +51,31 @@
 			<div class="sidebar-inner slimscroll">
 				<div id="sidebar-menu" class="sidebar-menu">
 					<ul>
-						<li class="active"> <a href="index.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
+						<li class="active"> <a href="dashboard.jsp"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
 						<li class="list-divider"></li>
 						<li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span>Employee</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-employee.html"> All Employees </a></li>
-								<li><a href="add-employee.html"> Add Employee </a></li>
+								<li><a href="all-employee.jsp"> All Employees </a></li>
+								<li><a href="add-employee.jsp"> Add Employee </a></li>
 							
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-bars"></i></fa-solid><span>Products</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-jackets.html">All Products </a></li>
-								<li><a href="add-jacket.html"> Add Product </a></li>
+								<li><a href="all-products.jsp">All Products </a></li>
+								<li><a href="add-product.html"> Add Product </a></li>
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-materials.html"> All Materials </a></li>
+								<li><a href="all-materials.jsp"> All Materials </a></li>
 								<li><a href="create-materials.html"> Add Material </a></li>
 								
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Order Material</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-orders.html">All Orders </a></li>
+								<li><a href="all-orders.jsp">All Orders </a></li>
 								<li><a href="add-order.html"> Add Order </a></li>
 							</ul>
 						</li>
@@ -178,25 +181,46 @@
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-hover table-center">
+
 										<thead>
-											<tr>
-												<th>Product ID</th>
-												<th>Name</th>
-												<th>Stock</th>
-												<th>Price</th>
-										
-											</tr>
-											<tr>
-												<th>2</th>
-												<th>Ahmad Saim</th>
-												<th>1</th>
-												<th>50RS</th>
-										
-											</tr>
+										<tr>
+											<th  >ID</th>
+											<th  >Name</th>
+											<th  >Stock</th>
+											<th >Price</th>
+											<th ></th>
+										</tr>
 										</thead>
 										<tbody>
-											
+										<%
+											Database dataAccess = new Database();
+											Connection connection = dataAccess.getConnection();
+											Statement statement = connection.createStatement();
+											ResultSet result = statement.executeQuery("SELECT * FROM product");
+											try {
+												while (result.next()) {
+										%>
+										<tr>
+											<td><%= result.getInt("productId") %></td>
+											<td><%= result.getString("name") %></td>
+											<td><%= result.getInt("price") %></td>
+											<td><%= result.getInt("totalQuantity") %></td>
+											<td>
+												<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
+												<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
+												<a class="delete" title="Delete" data-target="#delete_asset" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
+											</td>
+										</tr>
+										<%
+												}
+											} catch (Exception e) {
+												throw new RuntimeException(e);
+											}
+										%>
+
+
 										</tbody>
+
 									</table>
 								</div>
 							</div>

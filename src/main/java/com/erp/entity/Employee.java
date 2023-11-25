@@ -1,19 +1,20 @@
 package com.erp.entity;
 
-public class employee {
-    String name;
-    int employeeId;
-    String designation;
-    String address;
-    String email;
-    String phoneNumber;
-    int age;
-    String dateOfBirth;
-    String cnic;
-    String gender;
-    String dateOfJoining;
+public class Employee {
+    private String name;
+    private int employeeId;
+    private String designation;
+    private String address;
+    private String email;
+    private String phoneNumber;
+    private int age;
+    private String dateOfBirth;
+    private String cnic;
+    private String gender;
+    private String dateOfJoining;
 
-    public employee(String name, int employeeId, String designation, String address, String email, String phoneNumber, int age, String dateOfBirth, String cnic, String gender, String dateOfJoining) {
+    int salary;
+    public Employee(String name, int employeeId, String designation, String address, String email, String phoneNumber, int age, String dateOfBirth, String cnic, String gender, String dateOfJoining,int salary) {
         this.name = name;
         this.employeeId = employeeId;
         this.designation = designation;
@@ -25,6 +26,7 @@ public class employee {
         this.cnic = cnic;
         this.gender = gender;
         this.dateOfJoining = dateOfJoining;
+        this.salary = salary;
     }
 
     public void setName(String name) {
@@ -71,6 +73,10 @@ public class employee {
         this.dateOfJoining = dateOfJoining;
     }
 
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
     public String getName() {
         return name;
     }
@@ -113,5 +119,9 @@ public class employee {
 
     public String getDateOfJoining() {
         return dateOfJoining;
+    }
+
+    public int getSalary() {
+        return salary;
     }
 }

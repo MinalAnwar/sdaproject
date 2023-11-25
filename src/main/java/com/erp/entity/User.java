@@ -1,19 +1,21 @@
 package com.erp.entity;
 
 public class User {
-    String name;
-    String userName;
-    String password;
-    int userId;
-    String designation;
-    String address;
-    String email;
-    String phoneNumber;
-    int age;
-    String dateOfBirth;
-    String cnic;
-    String gender;
+    private String name;
+    private String userName;
+    private String password;
+    private int userId;
+    private String designation;
+    private String address;
+    private String email;
+    private String phoneNumber;
+    private int age;
+    private String dateOfBirth;
+    private String cnic;
+    private String gender;
 
+    public User()
+    {}
     public User(String name, String userName, String password, int userId, String designation, String address, String email, String phoneNumber, int age, String dateOfBirth, String cnic, String gender) {
         this.name = name;
         this.userName = userName;

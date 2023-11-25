@@ -16,7 +16,7 @@ public class LoginControl extends HttpServlet {
         AccountDao user = new AccountDao();
         boolean isValid = user.checkCredentials(request.getParameter("email"), request.getParameter("password"));
         if (isValid)
-            response.sendRedirect(request.getContextPath() + "/dashboard.html");
+            response.sendRedirect(request.getContextPath() + "/dashboard.jsp");
         else {
             request.setAttribute("valid", isValid);
             RequestDispatcher view = request.getRequestDispatcher("/index.jsp");

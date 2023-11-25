@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="com.erp.Database.Database" %>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -108,8 +111,8 @@
 	<div class="main-wrapper">
 		<div class="header">
 			<div class="header-left">
-				<b><a href="index.html" class="logo"> <span class="logoclass">ERP</span> </a></b>
-				<b><a href="index.html" class="logo logo-small" style="font-size: large; color:#009688;">ERP</a></b>
+				<b><a href="dashboard.jsp" class="logo"> <span class="logoclass">ERP</span> </a></b>
+				<b><a href="dashboard.jsp" class="logo logo-small" style="font-size: large; color:#009688;">ERP</a></b>
 			</div>
 			<a href="javascript:void(0);" id="toggle_btn"> <i class="fe fe-text-align-left"></i> </a>
 			<a class="mobile_btn" id="mobile_btn"> <i class="fas fa-bars"></i> </a>
@@ -133,31 +136,31 @@
 			<div class="sidebar-inner slimscroll">
 				<div id="sidebar-menu" class="sidebar-menu">
 					<ul>
-						<li class="active"> <a href="index.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
+						<li class="active"> <a href="dashboard.jsp"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
 						<li class="list-divider"></li>
 						<li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span>Employee</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-employee.html"> All Employees </a></li>
-								<li><a href="add-employee.html"> Add Employee </a></li>
+								<li><a href="all-employee.jsp"> All Employees </a></li>
+								<li><a href="add-employee.jsp"> Add Employee </a></li>
 							
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-bars"></i></fa-solid><span>Products</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="all-jackets.html">All Products </a></li>
-								<li><a href="add-jacket.html"> Add Product </a></li>
+								<li><a href="add-product.html"> Add Product </a></li>
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-materials.html"> All Materials </a></li>
+								<li><a href="all-materials.jsp"> All Materials </a></li>
 								<li><a href="create-materials.html"> Add Material </a></li>
 								
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Order Material</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-orders.html">All Orders </a></li>
+								<li><a href="all-orders.jsp">All Orders </a></li>
 								<li><a href="add-order.html"> Add Order </a></li>
 							</ul>
 						</li>
@@ -176,7 +179,7 @@
 				<div class="page-header">
 					<div class="row align-items-center">
 					<div class="col">
-					<h3 class="page-title mt-5">All Jackets</h3>
+					<h3 class="page-title mt-5">All Products</h3>
 					</div>
 					</div>
 					</div>
@@ -187,31 +190,44 @@
 								<div class="table-responsive">
 									<table class="datatable table table-stripped table table-hover table-center mb-0"  data-sorter="false">
 										<thead>
-											<tr>
-												<th>ID</th>
-												<th>Name</th>
-												<th>Components</th>
-												<th></th>
-												
-											</tr>
+										<tr>
+											<th  >ID</th>
+											<th  >Name</th>
+											<th  >Stock</th>
+											<th >Price</th>
+											<th ></th>
+										</tr>
 										</thead>
 										<tbody>
-											<tr>
-											<td >2</td>
-											<td>Apro</td>
-											<td >
-												<a data-target="#components" href="#" data-toggle="modal" style="text-decoration: underline;">View</a>
-											
+										<%
+											Database dataAccess = new Database();
+											Connection connection = dataAccess.getConnection();
+											Statement statement = connection.createStatement();
+											ResultSet result = statement.executeQuery("SELECT * FROM product");
+											try {
+												while (result.next()) {
+										%>
+										<tr>
+											<td><%= result.getInt("productId") %></td>
+											<td><%= result.getString("name") %></td>
+											<td><%= result.getInt("price") %></td>
+											<td><%= result.getInt("totalQuantity") %></td>
+											<td>
+												<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
+												<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
+												<a class="delete" title="Delete" data-target="#delete_asset" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
+											</td>
+										</tr>
+										<%
+												}
+											} catch (Exception e) {
+												throw new RuntimeException(e);
+											}
+										%>
 
-											</td>
-											
-											<td >
-											<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
-											<a class="edit" title="Edit" ><i class="material-icons">&#xE254;</i></a>
-											<a class="delete" title="Delete"  data-target="#delete_asset" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
-											</td>
-											</tr>
+
 										</tbody>
+
 									</table>
 								</div>
 							</div>
@@ -233,157 +249,6 @@
 					</div>
 				</div>
 			</div>
-
-			<div id="components" class="modal fade delete-modal" role="dialog">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-header">
-							
-							<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
-						  </div>
-						<div class="modal-body text-center"> 
-
-							
-							<div class="content container-fluid">
-								<div class="page-header">
-									<div class="row align-items-center">
-									<div class="col">
-									<h3 class="page-title mt-5">All Components</h3>
-									</div>
-									</div>
-									</div>
-								<div class="row">
-									<div class="col-sm-12">
-										<div class="card card-table">
-											<div class="card-body booking_card">
-												<div class="table-responsive">
-													<table class="datatable table table-stripped table table-hover table-center mb-auto"  data-sorter="false">
-														<thead>
-															<tr>
-															 <th>Id</th>
-																<th>Name</th>
-																<th>Amount</th>
-																
-																
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td>12</td>
-															<td>Zip</td>
-															<td>2</td>
-					
-															<td class="text-right">
-															<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
-															<a class="edit-inner" title="Edit" ><i class="material-icons" style="color:yellow">&#xE254;</i></a>
-															<a class="delete" title="Delete"  data-target="#myModal" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
-															</td>
-															</tr>
-
-															<tr>
-																<td>185</td>
-																<td>Collar</td>
-																<td>3</td>
-						
-																<td class="text-right">
-																<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
-																<a class="edit-inner" title="Edit" ><i class="material-icons">&#xE254;</i></a>
-																<a class="delete" title="Delete"  data-target="#myModal" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
-																</td>
-																</tr>
-
-
-																<tr>
-																	<td>122</td>
-																	<td>Rayzen</td>
-																	<td>4</td>
-							
-																	<td class="text-right">
-																	<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
-																	<a class="edit-inner" title="Edit" ><i class="material-icons">&#xE254;</i></a>
-																	<a class="delete" title="Delete"  data-target="#myModal" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
-																	</td>
-																	</tr>
-
-
-
-
-																	<tr >
-																		<td class="w-50">121ddddddsdsdsdsddsdsdwsdsdsd</td>
-																		<td>Button</td>
-																		<td>6</td>
-								
-																		<td class="text-right">
-																		<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
-																		<a class="edit-inner" title="Edit" ><i class="material-icons">&#xE254;</i></a>
-																		<a class="delete" title="Delete"  data-target="#myModal" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
-																		</td>
-																		</tr>
-	
-	
-
-
-
-
-
-
-
-														</tbody>
-													</table>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-
-							
-							
-							<!-- Modal HTML -->
-							<div id="myModal" class="modal fade">
-								<div class="modal-dialog modal-confirm">
-									<div class="modal-content">
-										<div class="modal-header flex-column">
-											<div class="icon-box">
-												<i class="material-icons">&#xE5CD;</i>
-											</div>						
-											<h4 class="modal-title w-100">Are you sure?</h4>	
-											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-										</div>
-										<div class="modal-body">
-											<p>Do you really want to delete these records? This process cannot be undone.</p>
-										</div>
-										<div class="modal-footer justify-content-center">
-											<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-											<button type="button" class="btn btn-danger">Delete</button>
-										</div>
-									</div>
-								</div>
-							</div>     
-
-
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-		</div>
-	</div>
 	<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 	<script src="assets/js/jquery-3.5.1.min.js"></script>
 	<script src="assets/js/popper.min.js"></script>
