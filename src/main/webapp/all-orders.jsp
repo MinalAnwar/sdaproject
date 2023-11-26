@@ -124,13 +124,13 @@
 					<li class="submenu"> <a href="#"><i class="fa-solid fa-bars"></i></fa-solid><span>Products</span> <span class="menu-arrow"></span></a>
 						<ul class="submenu_class" style="display: none;">
 							<li><a href="all-products.jsp">All Products </a></li>
-							<li><a href="add-product.html"> Add Product </a></li>
+							<li><a href="add-product.jsp"> Add Product </a></li>
 						</ul>
 					</li>
 					<li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span class="menu-arrow"></span></a>
 						<ul class="submenu_class" style="display: none;">
 							<li><a href="all-materials.jsp"> All Materials </a></li>
-							<li><a href="create-materials.html"> Add Material </a></li>
+							<li><a href="add-material.jsp"> Add Material </a></li>
 
 						</ul>
 					</li>

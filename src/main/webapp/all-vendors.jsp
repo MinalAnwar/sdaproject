@@ -4,12 +4,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 	<title>COSMO</title>
-	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="download.png">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
 	<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
@@ -73,6 +72,15 @@
 	
 		</script>
 
+
+
+
+
+
+
+
+
+	
 </head>
 
 <body>
@@ -99,8 +107,7 @@
 				</li>
 			</ul>
 		
-		</div>
-		<div class="sidebar" id="sidebar">
+		</div>		<div class="sidebar" id="sidebar">
 			<div class="sidebar-inner slimscroll">
 				<div id="sidebar-menu" class="sidebar-menu">
 					<ul>
@@ -108,27 +115,34 @@
 						<li class="list-divider"></li>
 						<li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span>Employee</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-employee.jsp"> All Employees </a></li>
-								<li><a href="add-employee.jsp"> Add Employee </a></li>
+								<li><a href="all-employee.html"> All Employees </a></li>
+								<li><a href="add-employee.html"> Add Employee </a></li>
 							
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-bars"></i></fa-solid><span>Products</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-products.jsp">All Products </a></li>
-								<li><a href="add-product.jsp"> Add Product </a></li>
+								<li><a href="all-jackets.html">All Products </a></li>
+								<li><a href="add-jacket.html"> Add Product </a></li>
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-materials.jsp"> All Materials </a></li>
-								<li><a href="add-material.jsp"> Add Material </a></li>
+								<li><a href="all-materials.html"> All Materials </a></li>
+								<li><a href="create-materials.html"> Add Material </a></li>
+								
+							</ul>
+						</li>
+						<li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Vendors</span> <span class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="all-vendors.html"> All Vendors </a></li>
+								<li><a href="add-vendors.html"> Add Vendors </a></li>
 								
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Order Material</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-orders.jsp">All Orders </a></li>
+								<li><a href="all-orders.html">All Orders </a></li>
 								<li><a href="add-order.html"> Add Order </a></li>
 							</ul>
 						</li>
@@ -142,60 +156,71 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="page-wrapper">
 			<div class="content container-fluid">
 				<div class="page-header">
 					<div class="row align-items-center">
-					<div class="col">
-					<h3 class="page-title mt-5">All Employees</h3>
+						<div class="col">
+							<div class="mt-5">
+								<h4 class="card-title float-left mt-2">All Vendors</h4>
+								
+                            </div>
+						</div>
 					</div>
-					</div>
+			
+					
+				
+				
+					
 					</div>
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="card card-table">
 							<div class="card-body booking_card">
+								
 								<div class="table-responsive">
-									<table class="datatable table table-stripped table table-hover table-center mb-0" data-sorter="false">
+									<table class="datatable table table-stripped table table-hover table-center mb-0">
 										<thead>
 											<tr>
-												<th>Employee ID</th>
-												<th>Name</th>
-												<th>Salary</th>
-												<th>Position</th>
-												<th>Phone Number</th>
-												<th></th>
+												<th  >ID</th>
+											<th  >Name</th>
+											<th  >Rating</th>
+											<th >Phone Number</th>
+												<th >Email</th>
+											<th ></th>
 											</tr>
-										</thead>
-										<tbody>
-										<%
-											Database dataAccess = new Database();
-											Connection connection = dataAccess.getConnection();
-											Statement statement = connection.createStatement();
-											ResultSet result = statement.executeQuery("SELECT * FROM employee");
-											try {
-												while (result.next()) {
-										%>
-										<tr>
-											<td><%= result.getInt("employeeId") %></td>
-											<td><%= result.getString("name") %></td>
-											<td><%= result.getInt("salary") %></td>
-											<td><%= result.getString("designation") %></td>
-											<td><%= result.getString("phoneNumber") %></td>
-											<td>
-												<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
-												<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
-												<a class="delete" title="Delete" data-target="#delete_asset" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
-											</td>
-										</tr>
-										<%
-												}
-											} catch (Exception e) {
+											</thead>
+											<tbody>
+											<%
+												Database dataAccess = new Database();
+												Connection connection = dataAccess.getConnection();
+												Statement statement = connection.createStatement();
+												ResultSet result = statement.executeQuery("SELECT * FROM `vendor`");
+												try {
+													while (result.next()) {
+											%>
+											<tr>
+												<td><%= result.getString("vendorId") %></td>
+												<td><%= result.getInt("name") %></td>
+												<td><%= result.getString("rating") %></td>
+												<td><%= result.getDate("phoneNumber") %></td>
+												<td><%= result.getInt("email") %></td>
+												<td>
+													<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
+													<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
+													<a class="delete" title="Delete" data-target="#delete_asset" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
+												</td>
+											</tr>
+											<%
+													}
+												} catch (Exception e) {
 													throw new RuntimeException(e);
-											}
-										%>
+												}
+											%>
 
-										</tbody>
+
+											</tbody>
 									</table>
 								</div>
 							</div>
@@ -209,7 +234,8 @@
 						<div class="modal-body text-center"> <img src="assets/img/sent.png" alt="" width="50" height="46">
 							<h3 class="delete_class">Do you really want to delete these records? This process cannot be undone.</h3>
 							<div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-								<button type="submit" class="btn btn-danger">Delete</button>
+								<button type="submit" class="btn btn-danger ">Delete</button>
+							
 							</div>
 						</div>
 					</div>

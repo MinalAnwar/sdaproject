@@ -1,3 +1,4 @@
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +66,7 @@
 						<li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="all-materials.jsp"> All Materials </a></li>
-								<li><a href="create-materials.html"> Add Material </a></li>
+								<li><a href="add-material.jsp"> Add Material </a></li>
 								
 							</ul>
 						</li>
@@ -90,155 +91,47 @@
 				<div class="page-header">
 					<div class="row align-items-center">
 						<div class="col">
-							<h3 class="page-title mt-5">Add Jacket</h3> </div>
+							<h3 class="page-title mt-5">Add Product</h3> </div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
-						<form>
+						<form method="post" action="addProduct">
 							<div class="row formtype">
-								<div class="col-lg-12 justify-content-left align-items-left">
-									<div class="form-group w-25">
-										<label>Jacket Name</label>
-										<input class="form-control" type="text" value=""> </div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Product Id</label>
+										<input type="text" class="form-control" required name="id"> </div>
 								</div>
-								
-									<div class="col-md-6 col-lg-6 ">
-										<div class="form-group w-50">
-											<label>Material 1</label>
-											<select class="form-control" id="sel1" name="sellist1">
-												<option>Select</option>
-												<option>Collar</option>
-												<option>Zip</option>
-												<option>Cloth</option>
-												<option>Button</option>
-												
-											</select>
-											
-										</div>
-									
-									</div>
-									<div class="col-md-6 col-lg-6">
-										<div class="form-group w-50" >
-											<label>Amount </label>
-											<input type="text" class="form-control" id="usr"> </div>
-									</div>
-								
-								
-									<div class="col-md-6 col-lg-6 ">
-										<div class="form-group w-50">
-											<label>Material 2</label>
-											<select class="form-control" id="sel1" name="sellist1">
-												<option>Select</option>
-												<option>Collar</option>
-												<option>Zip</option>
-												<option>Cloth</option>
-												<option>Button</option>
-												
-											</select>
-											
-										</div>
-									
-									</div>
-									<div class="col-md-6 col-lg-6">
-										<div class="form-group w-50" >
-											<label>Amount </label>
-											<input type="text" class="form-control" id="usr"> </div>
-									</div>
-									<div class="col-md-6 col-lg-6 ">
-										<div class="form-group w-50">
-											<label>Material 3</label>
-											<select class="form-control" id="sel1" name="sellist1">
-												<option>Select</option>
-												<option>Collar</option>
-												<option>Zip</option>
-												<option>Cloth</option>
-												<option>Button</option>
-												
-											</select>
-											
-										</div>
-									
-									</div>
-									<div class="col-md-6 col-lg-6">
-										<div class="form-group w-50" >
-											<label>Amount </label>
-											<input type="text" class="form-control" id="usr"> </div>
-									</div>
-									<div class="col-md-6 col-lg-6 ">
-										<div class="form-group w-50">
-											<label>Material 4</label>
-											<select class="form-control" id="sel1" name="sellist1">
-												<option>Select</option>
-												<option>Collar</option>
-												<option>Zip</option>
-												<option>Cloth</option>
-												<option>Button</option>
-												
-											</select>
-											
-										</div>
-									
-									</div>
-									<div class="col-md-6 col-lg-6">
-										<div class="form-group w-50" >
-											<label>Amount </label>
-											<input type="text" class="form-control" id="usr"> </div>
-									</div>
-									<div class="col-md-6 col-lg-6 ">
-										<div class="form-group w-50">
-											<label>Material 5</label>
-											<select class="form-control" id="sel1" name="sellist1">
-												<option>Select</option>
-												<option>Collar</option>
-												<option>Zip</option>
-												<option>Cloth</option>
-												<option>Button</option>
-												
-											</select>
-											
-										</div>
-									
-									</div>
-									<div class="col-md-6 col-lg-6">
-										<div class="form-group w-50" >
-											<label>Amount </label>
-											<input type="text" class="form-control" id="usr"> </div>
-									</div>
-							
-							
-									<div class="col-md-6 col-lg-6 ">
-										<div class="form-group w-50">
-											<label>Material 6</label>
-											<select class="form-control" id="sel1" name="sellist1">
-												<option>Select</option>
-												<option>Collar</option>
-												<option>Zip</option>
-												<option>Cloth</option>
-												<option>Button</option>
-												
-											</select>
-											
-										</div>
-									
-									</div>
-									<div class="col-md-6 col-lg-6">
-										<div class="form-group w-50" >
-											<label>Amount </label>
-											<input type="text" class="form-control" id="usr"> </div>
-									</div>
-								
-									
-									
-
-
-
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Name</label>
+										<input type="text" class="form-control" required name="name"> </div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Quantity</label>
+										<input type="text" class="form-control" required name="stock"> </div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label>Price</label>
+										<input type="text" class="form-control" required name="price"> </div>
+								</div>
 							</div>
+							<button type="submit" class="btn btn-primary buttonedit1">ADD</button>
+							<%
+								Boolean isValid = (Boolean) request.getAttribute("valid");
+								if (isValid != null && !isValid) {
+							%>
+							</p>
+							<div style="color: red;">Cannot Add New Product</div>
+							<%
+								}
+							%>
 						</form>
 					</div>
 				</div>
-				<button type="button" class="btn btn-primary buttonedit ml-2">ADD</button>
-			
 			</div>
 		</div>
 	</div>

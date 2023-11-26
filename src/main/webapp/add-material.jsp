@@ -5,8 +5,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-	<title>ERP</title>
-	<link rel="shortcut icon" type="image/x-icon" href="download.png">
+	<title>COSMO</title>
+	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
 	<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
@@ -17,7 +17,6 @@
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 	<script src="https://kit.fontawesome.com/4ecf238d25.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -40,7 +39,7 @@
 							<h6>Soeng Souy</h6>
 							<p class="text-muted mb-0">Administrator</p>
 						</div>
-					</div> <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="./index.jsp">Logout</a></div>
+					</div> <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="login.html">Logout</a></div>
 			</li>
 		</ul>
 
@@ -61,20 +60,13 @@
 					<li class="submenu"> <a href="#"><i class="fa-solid fa-bars"></i></fa-solid><span>Products</span> <span class="menu-arrow"></span></a>
 						<ul class="submenu_class" style="display: none;">
 							<li><a href="all-products.jsp">All Products </a></li>
-							<li><a href="add-jacket.hmtl"> Add Product </a></li>
+							<li><a href="add-product.html"> Add Product </a></li>
 						</ul>
 					</li>
 					<li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span class="menu-arrow"></span></a>
 						<ul class="submenu_class" style="display: none;">
 							<li><a href="all-materials.jsp"> All Materials </a></li>
 							<li><a href="add-material.jsp"> Add Material </a></li>
-
-						</ul>
-					</li>
-					<li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Vendors</span> <span class="menu-arrow"></span></a>
-						<ul class="submenu_class" style="display: none;">
-							<li><a href="all-vendors.jsp"> All Vendors </a></li>
-							<li><a href="add-vendors.html"> Add Vendors </a></li>
 
 						</ul>
 					</li>
@@ -99,84 +91,41 @@
 			<div class="page-header">
 				<div class="row align-items-center">
 					<div class="col">
-						<h3 class="page-title mt-5">Add Employee</h3> </div>
+						<h3 class="page-title mt-5">Add Material</h3> </div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
-					<form method="post" action="addEmployee">
+					<form method="post" action="material">
 						<div class="row formtype">
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>Employee ID</label>
-									<input name = "id"  class="form-control" type="number"  value="" required> </div>
+									<label>Material Id</label>
+									<input type="text" class="form-control" required name="id"> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Name</label>
-									<input name = "name"  class="form-control" type="text"  value="" required> </div>
+									<input type="text" class="form-control"  required name="name"> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>Age</label>
-									<input type="number" name = "age" class="form-control" required> </div>
-							</div>
-
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>Phone Number</label>
-									<input type="text" name = "phoneNumber" class="form-control" required> </div>
-							</div>
-
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>Address</label>
-									<input type="text" name = "address" class="form-control" required> </div>
+									<label>Quantity</label>
+									<input type="text" class="form-control" required name="stock"> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>Email</label>
-									<input type="text" name = "email" class="form-control" required> </div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>Date of Birth</label>
-									<input type="date" name = "dateOfBirth" class="form-control" required> </div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>CNIC</label>
-									<input type="text" name="cnic" class="form-control" required> </div>
-							</div>
-
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>Gender</label>
-									<input type="text" name="gender" class="form-control" required> </div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>Salary</label>
-									<input type="number" name = "salary" class="form-control"  required> </div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>Designation</label>
-									<input type="text" name ="designation" class="form-control"  required> </div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>Joining Date</label>
-									<input type="date" name = "joiningDate" class="form-control" required> </div>
+									<label>Price</label>
+									<input type="text" class="form-control" required name="price"> </div>
 							</div>
 						</div>
-						<button class="btn btn-primary btn-block" type="submit">Add Employee</button>
+						<button type="submit" class="btn btn-primary buttonedit1">ADD</button>
 						<%
 							Boolean isValid = (Boolean) request.getAttribute("valid");
 							if (isValid != null && !isValid) {
 						%>
 						</p>
-						<div style="color: red;">Cannot Add New Employee</div>
+						<div style="color: red;">Cannot Add New material</div>
 						<%
 							}
 						%>
@@ -189,9 +138,10 @@
 <script src="assets/js/jquery-3.5.1.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/moment.min.js"></script>
+<script src="assets/js/select2.min.js"></script>
 <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="assets/plugins/raphael/raphael.min.js"></script>
-<script src="assets/js/moment.min.js"></script>
 <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
 <script src="assets/js/script.js"></script>
 <script>

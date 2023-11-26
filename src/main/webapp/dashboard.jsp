@@ -63,13 +63,13 @@
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-bars"></i></fa-solid><span>Products</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="all-products.jsp">All Products </a></li>
-								<li><a href="add-product.html"> Add Product </a></li>
+								<li><a href="add-product.jsp"> Add Product </a></li>
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="all-materials.jsp"> All Materials </a></li>
-								<li><a href="create-materials.html"> Add Material </a></li>
+								<li><a href="add-material.jsp"> Add Material </a></li>
 								
 							</ul>
 						</li>
@@ -77,6 +77,13 @@
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="all-orders.jsp">All Orders </a></li>
 								<li><a href="add-order.html"> Add Order </a></li>
+							</ul>
+						</li>
+						<li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Vendors</span> <span class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="all-vendors.jsp"> All Vendors </a></li>
+								<li><a href="add-vendors.html"> Add Vendors </a></li>
+
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-star"></i><span>Quality</span> <span class="menu-arrow"></span></a>

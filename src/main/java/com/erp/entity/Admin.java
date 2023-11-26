@@ -1,7 +1,10 @@
 package com.erp.entity;
 
-import com.erp.dao.AddEmployeeDao;
-import com.erp.entity.Employee;
+import com.erp.dao.EmployeeDao;
+import com.erp.dao.InventoryDao;
+
+import java.util.List;
+
 public class Admin extends User{
     public Admin()
     {
@@ -15,8 +18,32 @@ public class Admin extends User{
     {
         //got data from controller not send it to doa and
         // then add the employee in database
-        AddEmployeeDao insertData = new AddEmployeeDao();
+        EmployeeDao insertData = new EmployeeDao();
         boolean insertionCheck = insertData.addEmployeeDAO(obj);
+        return insertionCheck;
+    }
+    public boolean addInventory(Inventory obj, String status)
+    {
+        //got data from controller not send it to doa and
+        // then add the employee in database
+        boolean insertionCheck = false;
+        if(status.equalsIgnoreCase("rawmaterial")) {
+            List<RawMaterial> rawMaterials = obj.getRawMaterials(); //get the list from inventory
+            // Get the last added raw material
+            RawMaterial lastAddedRawMaterial = rawMaterials.get(rawMaterials.size() - 1); // get last obj of raw material added
+            InventoryDao insertData = new InventoryDao();
+            insertionCheck = insertData.addRawMaterialDAO(lastAddedRawMaterial);
+        }
+        else if (status.equalsIgnoreCase("product"))
+        {
+            List<Product> products = obj.getProducts(); //get the list from inventory
+            // Get the last added raw material
+            Product lastAddedProduct = products.get(products.size() - 1); // get last obj of raw material added
+            InventoryDao insertData = new InventoryDao();
+            insertionCheck = insertData.addProductDAO(lastAddedProduct);
+
+        }
+
         return insertionCheck;
     }
 }

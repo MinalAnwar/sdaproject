@@ -6,7 +6,7 @@ import com.erp.entity.Employee;
 import java.sql.*;
 
 
-public class AddEmployeeDao {
+public class EmployeeDao {
         public boolean addEmployeeDAO(Employee obj)
         {
             Database dataAccess = new Database();
