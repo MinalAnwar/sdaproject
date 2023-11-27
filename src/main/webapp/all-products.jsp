@@ -215,7 +215,18 @@
 											<td>
 												<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
 												<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
-												<a class="delete" title="Delete" data-target="#delete_asset" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
+												<a class="delete" title="Delete" data-target="#delete_asset" onclick="sendRequestWithId(this)" data-product-id="<%= result.getInt("productId")%>"><i class="material-icons">&#xE872;</i></a>
+
+												<%
+
+													Boolean isValid = (Boolean) request.getAttribute("valid");
+													if (isValid != null && !isValid) {
+												%>
+												</p>
+												<div style="color: red;">Cannot delete Product</div>
+												<%
+													}
+												%>
 											</td>
 										</tr>
 										<%
@@ -224,7 +235,6 @@
 												throw new RuntimeException(e);
 											}
 										%>
-
 
 										</tbody>
 
@@ -243,12 +253,41 @@
 						<div class="modal-body text-center"> <img src="assets/img/sent.png" alt="" width="50" height="46">
 							<h3 class="delete_class">Are you sure want to delete this Asset?</h3>
 							<div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-								<button type="submit" class="btn btn-danger">Delete</button>
+								<button type="submit" id="delete_button_modal" class="btn btn-danger">Delete</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<script>
+				function sendRequestWithId(element) {
+					var productId=element.getAttribute("data-product-id");
+					//show alert by using its id and class
+					$('#delete_asset').modal('show');
+
+					// Attach a click event to the Delete button using its id in the modal then this function do the deletion
+					$('#delete_button_modal').on('click', function () {
+						// Make an AJAX request to delete the record
+						$.ajax({
+							type: 'GET',
+							url: 'productdelete?productID=' + productId,
+							success: function (response) {
+								// On successful deletion, remove the row
+								$('#row_' + productId).remove();
+								// Hide the modal using its id after deletion
+								$('#delete_asset').modal('hide');
+								location.reload();
+							},
+							error: function (error) {
+								$('#delete_asset').modal('hide');
+							}
+						});
+
+						// Remove the click event to prevent multiple clicks
+						$('#delete_button_modal').off('click');
+					});
+				}
+			</script>
 	<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 	<script src="assets/js/jquery-3.5.1.min.js"></script>
 	<script src="assets/js/popper.min.js"></script>
