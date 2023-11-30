@@ -50,8 +50,8 @@
                             <div class="form-group">
                                 <button class="btn btn-primary btn-block" type="submit">Login</button>
                             </div>
-
                             <%
+
                                 Boolean isValid = (Boolean) request.getAttribute("valid");
                                 if (isValid != null && !isValid) {
                             %>
