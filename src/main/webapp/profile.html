@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 	<title>ERP</title>
-	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="download.png">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
 	<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
@@ -32,13 +32,7 @@
 				<li class="nav-item dropdown has-arrow">
 					<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"> <span class="user-img"><i class="fa-solid fa-bars"></i></span> </a>
 					<div class="dropdown-menu">
-						<div class="user-header">
-							<div class="avatar avatar-sm"> <img src="assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle"> </div>
-							<div class="user-text">
-								<h6>Soeng Souy</h6>
-								<p class="text-muted mb-0">Administrator</p>
-							</div>
-						</div> <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="index.jsp">Logout</a></div>
+					<a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="index.jsp">Logout</a></div>
 				</li>
 			</ul>
 		
@@ -60,6 +54,11 @@
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="all-products.jsp">All Products </a></li>
 								<li><a href="add-product.jsp"> Add Product </a></li>
+							</ul>
+						</li>
+						<li class="submenu"> <a href="#"><i class="fa-solid fa-file"></i><span>Tasks</span> <span class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="add-task.html">Add Task</a></li>
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span class="menu-arrow"></span></a>
@@ -118,16 +117,10 @@
 							<div class="row align-items-center">
 								
 								<div class="col ml-md-n2 profile-user-info">
-									<h4 class="user-name mb-3">David Alvarez</h4>
+									<h4 class="user-name mb-3">Ali Nawaz</h4>
 									<h6 class="text-muted mt-1">Manager</h6>
-									<div class="user-Location mt-1"><i class="fas fa-map-marker-alt"></i> Florida, United States</div>
-									<div class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+									<div class="user-Location mt-1"><i class="fas fa-map-marker-alt"></i>//address</div>
 								</div>
-								<div class="col-auto profile-btn"> <a href="" class="btn btn-primary">
-								Message
-								</a> <a href="edit-profile.html" class="btn btn-primary">
-								Edit
-								</a> </div>
 							</div>
 						</div>
 						<div class="profile-menu">
@@ -148,11 +141,11 @@
 													</h5>
 												<div class="row mt-5">
 													<p class="col-sm-3 text-sm-right mb-0 mb-sm-3">Name</p>
-													<p class="col-sm-9">David Alvarez</p>
+													<p class="col-sm-9">Ali Nawaz</p>
 												</div>
 												<div class="row">
 													<p class="col-sm-3 text-sm-right mb-0 mb-sm-3">Date of Birth</p>
-													<p class="col-sm-9">24 Jul 1983</p>
+													<p class="col-sm-9">25 Jul 2004</p>
 												</div>
 												<div class="row">
 													<p class="col-sm-3 text-sm-right mb-0 mb-sm-3">Email ID </p>
@@ -160,14 +153,14 @@
 												</div>
 												<div class="row">
 													<p class="col-sm-3 text-sm-right mb-0 mb-sm-3">Mobile</p>
-													<p class="col-sm-9">305-310-5857</p>
+													<p class="col-sm-9">03044068270</p>
 												</div>
 												<div class="row">
 													<p class="col-sm-3 text-sm-right mb-0">Address</p>
-													<p class="col-sm-9 mb-0">4663 Agriculture Lane,
-														<br> Miami,
-														<br> Florida - 33165,
-														<br> United States.</p>
+													<p class="col-sm-9 mb-0">Pascoo,
+														<br> canal Road,
+														<br> lahore,
+														<br> Pakistan.</p>
 												</div>
 											</div>
 										</div>
@@ -184,18 +177,25 @@
 																<div class="col-12 col-sm-6">
 																	<div class="form-group">
 																		<label>First Name</label>
-																		<input type="text" class="form-control" value="John"> </div>
+																		<input type="text" class="form-control" value="Ali"> </div>
 																</div>
 																<div class="col-12 col-sm-6">
 																	<div class="form-group">
 																		<label>Last Name</label>
-																		<input type="text" class="form-control" value="Doe"> </div>
+																		<input type="text" class="form-control" value="Nawaz"> </div>
+																</div>
+																<div class="col-12">
+																	<div class="form-group">
+																		<label>Post</label>
+																		<div >
+																			<input type="text" class="form-control" value="Manager"> </div>
+																	</div>
 																</div>
 																<div class="col-12">
 																	<div class="form-group">
 																		<label>Date of Birth</label>
 																		<div class="cal-icon">
-																			<input type="text" class="form-control" value="24-07-1983"> </div>
+																			<input type="text" class="form-control" value="25-07-2004"> </div>
 																	</div>
 																</div>
 																<div class="col-12 col-sm-6">
@@ -206,34 +206,34 @@
 																<div class="col-12 col-sm-6">
 																	<div class="form-group">
 																		<label>Mobile</label>
-																		<input type="text" value="+1 202-555-0125" class="form-control"> </div>
+																		<input type="text" value="03044068270" class="form-control"> </div>
 																</div>
 																<div class="col-12">
 																	<h5 class="form-title"><span>Address</span></h5> </div>
 																<div class="col-12">
 																	<div class="form-group">
 																		<label>Address</label>
-																		<input type="text" class="form-control" value="4663 Agriculture Lane"> </div>
+																		<input type="text" class="form-control" value="Pascoo"> </div>
 																</div>
 																<div class="col-12 col-sm-6">
 																	<div class="form-group">
 																		<label>City</label>
-																		<input type="text" class="form-control" value="Miami"> </div>
+																		<input type="text" class="form-control" value="canal road"> </div>
 																</div>
 																<div class="col-12 col-sm-6">
 																	<div class="form-group">
 																		<label>State</label>
-																		<input type="text" class="form-control" value="Florida"> </div>
+																		<input type="text" class="form-control" value="lahore"> </div>
 																</div>
 																<div class="col-12 col-sm-6">
 																	<div class="form-group">
 																		<label>Zip Code</label>
-																		<input type="text" class="form-control" value="22434"> </div>
+																		<input type="text" class="form-control" value="54000"> </div>
 																</div>
 																<div class="col-12 col-sm-6">
 																	<div class="form-group">
 																		<label>Country</label>
-																		<input type="text" class="form-control" value="United States"> </div>
+																		<input type="text" class="form-control" value="Pakistan"> </div>
 																</div>
 															</div>
 															<button type="submit" class="btn btn-primary btn-block">Save Changes</button>
@@ -274,6 +274,7 @@
 			</div>
 		</div>
 	</div>
+	<script src="disable.js"></script>
 	<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 	<script src="assets/js/jquery-3.5.1.min.js"></script>
 	<script src="assets/js/popper.min.js"></script>

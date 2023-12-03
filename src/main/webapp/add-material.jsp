@@ -83,13 +83,6 @@
 
 						</ul>
 					</li>
-					<li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Tasks</span> <span class="menu-arrow"></span></a>
-						<ul class="submenu_class" style="display: none;">
-							<li><a href="all-tasks.jsp"> All Tasks </a></li>
-							<li><a href="add-task.jsp"> Add Task </a></li>
-
-						</ul>
-					</li>
 					<li class="submenu"> <a href="#"><i class="fa-solid fa-star"></i><span>Quality</span> <span class="menu-arrow"></span></a>
 						<ul class="submenu_class" style="display: none;">
 							<li><a href="report.html">Quality Report</a></li>
