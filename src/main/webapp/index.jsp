@@ -52,6 +52,8 @@
                             <%
 
                                 Boolean isValid = (Boolean) request.getAttribute("valid");
+                                String designation = (String) request.getAttribute("designation");
+                                System.out.println(designation);
                                 if (isValid != null && !isValid) {
                             %>
                             </p>

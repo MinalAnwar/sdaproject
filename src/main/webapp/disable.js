@@ -1,13 +1,10 @@
 function disable(){
-<<<<<<< HEAD
     var isQualityAnalysit = true;
-=======
 
     var isQualityAnalysit=true;
->>>>>>> origin/master
 	var isAdmin=false;
 	var isManager=false;
-	
+
 	document.addEventListener("DOMContentLoaded", function() {
 
 // Find the link element by its href attribute
@@ -17,32 +14,23 @@ function disable(){
 		var Reportlink=document.querySelector('a[href="report.html"]');
 //for order
 		var allorderlink =document.querySelector('a[href="all-orders.jsp"]');
-<<<<<<< HEAD
 		var addorderlink =document.querySelector('a[href="add-order.html"]');
-=======
 		var addorderlink =document.querySelector('a[href="add-order.jsp"]');
->>>>>>> origin/master
 //for product
 		var allproductslink=document.querySelector('a[href="all-products.jsp"]');
 		var addproductslink=document.querySelector('a[href="add-product.jsp"]');
 //for venders
 		var allvenderslink=document.querySelector('a[href="all-vendors.jsp"]');
-<<<<<<< HEAD
 		var addvenderslink=document.querySelector('a[href="add-vendors.html"]');
-=======
 		var addvenderslink=document.querySelector('a[href="add-vendors.jsp"]');
->>>>>>> origin/master
 //for materials
 		var allmateriallink=document.querySelector('a[href="all-materials.jsp"]');
 		var addmateriallink=document.querySelector('a[href="add-material.jsp"]');
 //for employee
 		var allemployeelink=document.querySelector('a[href="all-employee.jsp"]');
 		var addemployeelink=document.querySelector('a[href="add-employee.jsp"]');
-<<<<<<< HEAD
-=======
 //for task
 		var addtasklink=document.querySelector('a[href="add-task.html"]');
->>>>>>> origin/master
 		if (isAdmin) {
             //quotation pages
 		}
@@ -54,10 +42,6 @@ function disable(){
 			rateProductLink.style.color = "#999";
 			Reportlink.style.color="#999";
 
-<<<<<<< HEAD
-=======
-			
->>>>>>> origin/master
 		}
 		if(isQualityAnalysit){
 			allorderlink.style.pointerEvents="none";
@@ -70,11 +54,8 @@ function disable(){
 			addmateriallink.style.pointerEvents="none";
 			allemployeelink.style.pointerEvents="none";
 			addemployeelink.style.pointerEvents="none";
-<<<<<<< HEAD
-=======
-			addtasklink.style.pointerEvents="none";
->>>>>>> origin/master
 
+			addtasklink.style.pointerEvents="none";
 			allorderlink.style.color="#999";
 			addorderlink.style.color="#999";
 			allproductslink.style.color="#999";
@@ -85,10 +66,8 @@ function disable(){
 			addmateriallink.style.color="#999";
 			allemployeelink.style.color="#999";
 			addemployeelink.style.color="#999";
-<<<<<<< HEAD
-=======
+
 			addtasklink.style.color="#999";
->>>>>>> origin/master
 		}
 		});
 }
