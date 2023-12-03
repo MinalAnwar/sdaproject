@@ -1,9 +1,6 @@
 package com.erp.entity;
 
-import com.erp.dao.EmployeeDao;
-import com.erp.dao.InventoryDao;
-import com.erp.dao.OrderDao;
-import com.erp.dao.VendorDao;
+import com.erp.dao.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -87,6 +84,10 @@ public class Admin extends User {
         boolean deletionCheck = deleteData.deleteEmployee(id);
         return deletionCheck;
     }
+    public boolean deleteTask(int taskID) {
+        TaskDao deleteData = new TaskDao();
+        return deleteData.deleteTask(taskID);
+    }
 
     public boolean deleteInventory(int id, String status) {
         //got data from controller not send it to doa and
@@ -116,6 +117,11 @@ public class Admin extends User {
     public ResultSet viewOrder() throws SQLException {
         OrderDao obj = new OrderDao();
         return obj.viewAllOrders();
+    }
+
+    public ResultSet viewTasks() throws SQLException {
+        TaskDao obj = new TaskDao();
+        return obj.viewAllTasks();
     }
 
     public ResultSet viewEmployee() throws SQLException {
@@ -149,5 +155,16 @@ public class Admin extends User {
     public boolean addOrder(Order obj) {
         OrderDao dataInsert = new OrderDao();
         return dataInsert.addOrder(obj);
+    }
+
+
+    public boolean updateTask(int oldID, Task obj) {
+        TaskDao updateData =new TaskDao();
+        return updateData.updateTask(oldID,obj);
+    }
+
+    public boolean addTask(Task obj) {
+        TaskDao insertData = new TaskDao();
+        return insertData.addTask(obj);
     }
 }

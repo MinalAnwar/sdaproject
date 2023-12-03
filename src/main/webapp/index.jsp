@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
 	<script>
 		function togglePasswordVisibility() {
-			console.log("inside it  ");
 			var passwordField = document.getElementsByName("password")[0];
 			if (passwordField.type === "password") {
 				passwordField.type = "text";

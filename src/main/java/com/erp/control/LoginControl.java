@@ -1,21 +1,22 @@
 package com.erp.control;
 
-import com.erp.dao.AccountDao;
+import com.erp.dao.SystemWorks;
 import com.erp.entity.Inventory;
-import com.erp.entity.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "LoginControl", value = "/login")
 public class LoginControl extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        AccountDao user = new AccountDao();
-        boolean isValid = user.checkCredentials(request.getParameter("email"), request.getParameter("password"));
+        SystemWorks obj = new SystemWorks();
+        boolean isValid = obj.checkCredentials(request.getParameter("email"), request.getParameter("password"));
         if (isValid) {
             // make an obj of inventory for this session
             HttpSession session = request.getSession();
@@ -27,6 +28,8 @@ public class LoginControl extends HttpServlet {
                 session.setAttribute("inventory", inventory);
             }
             response.sendRedirect(request.getContextPath() + "/dashboard.jsp");
+            String designation =obj.getDesignation(request.getParameter("email"),request.getParameter("password"));
+            System.out.println(designation);
         }
         else {
             request.setAttribute("valid", isValid);

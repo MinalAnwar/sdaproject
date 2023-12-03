@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="assets/css/feathericon.min.css">
+    <link rel="stylehseet" href="https://cdn.oesmith.co.uk/morris-0.5.1.css">
     <link rel="stylesheet" href="assets/plugins/morris/morris.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
-          type='text/css'>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/4ecf238d25.js" crossorigin="anonymous"></script>
 </head>
+
 
 <body>
 <div class="main-wrapper">
@@ -31,19 +31,9 @@
         <ul class="nav user-menu">
 
             <li class="nav-item dropdown has-arrow">
-                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"> <span class="user-img"><i
-                        class="fa-solid fa-bars"></i></span> </a>
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"> <span class="user-img"><i class="fa-solid fa-bars"></i></span> </a>
                 <div class="dropdown-menu">
-                    <div class="user-header">
-                        <div class="avatar avatar-sm"><img src="assets/img/profiles/avatar-01.jpg" alt="User Image"
-                                                           class="avatar-img rounded-circle"></div>
-                        <div class="user-text">
-                            <h6>Soeng Souy</h6>
-                            <p class="text-muted mb-0">Administrator</p>
-                        </div>
-                    </div>
-                    <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item"
-                                                                                  href="index.jsp">Logout</a></div>
+                    <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="index.jsp">Logout</a></div>
             </li>
         </ul>
 
@@ -52,48 +42,42 @@
         <div class="sidebar-inner slimscroll">
             <div id="sidebar-menu" class="sidebar-menu">
                 <ul>
-                    <li class="active"><a href="dashboard.jsp"><i class="fas fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a></li>
+                    <li class="active"> <a href="dashboard.jsp"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
                     <li class="list-divider"></li>
-                    <li class="submenu"><a href="#"><i class="fas fa-user"></i> <span>Employee</span> <span
-                            class="menu-arrow"></span></a>
+                    <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span>Employee</span> <span class="menu-arrow"></span></a>
                         <ul class="submenu_class" style="display: none;">
                             <li><a href="all-employee.jsp"> All Employees </a></li>
                             <li><a href="add-employee.jsp"> Add Employee </a></li>
 
                         </ul>
                     </li>
-                    <li class="submenu"><a href="#"><i class="fa-solid fa-bars"></i></fa-solid><span>Products</span>
-                        <span class="menu-arrow"></span></a>
+                    <li class="submenu"> <a href="#"><i class="fa-solid fa-bars"></i></fa-solid><span>Products</span> <span class="menu-arrow"></span></a>
                         <ul class="submenu_class" style="display: none;">
                             <li><a href="all-products.jsp">All Products </a></li>
                             <li><a href="add-product.jsp"> Add Product </a></li>
                         </ul>
                     </li>
-                    <li class="submenu"><a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span
-                            class="menu-arrow"></span></a>
+                    <li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span class="menu-arrow"></span></a>
                         <ul class="submenu_class" style="display: none;">
                             <li><a href="all-materials.jsp"> All Materials </a></li>
                             <li><a href="add-material.jsp"> Add Material </a></li>
 
                         </ul>
                     </li>
-                    <li class="submenu"><a href="#"><i
-                            class="fa-solid fa-clipboard-list"></i><span>Order Material</span> <span
-                            class="menu-arrow"></span></a>
+                    <li class="submenu"> <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Order Material</span> <span class="menu-arrow"></span></a>
                         <ul class="submenu_class" style="display: none;">
-                            <li><a href="all-orders.html">All Orders </a></li>
+                            <li><a href="all-orders.jsp">All Orders </a></li>
                             <li><a href="add-order.jsp"> Add Order </a></li>
                         </ul>
                     </li>
-                    <li class="submenu"><a href="#"><i class="fa fa-industry"></i> <span>Vendors</span> <span
-                            class="menu-arrow"></span></a>
+                    <li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Vendors</span> <span class="menu-arrow"></span></a>
                         <ul class="submenu_class" style="display: none;">
                             <li><a href="all-vendors.jsp"> All Vendors </a></li>
                             <li><a href="add-vendors.jsp"> Add Vendors </a></li>
 
                         </ul>
                     </li>
+
                     <li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Tasks</span> <span class="menu-arrow"></span></a>
                         <ul class="submenu_class" style="display: none;">
                             <li><a href="all-tasks.jsp"> All Tasks </a></li>
@@ -101,8 +85,7 @@
 
                         </ul>
                     </li>
-                    <li class="submenu"><a href="#"><i class="fa-solid fa-star"></i><span>Quality</span> <span
-                            class="menu-arrow"></span></a>
+                    <li class="submenu"> <a href="#"><i class="fa-solid fa-star"></i><span>Quality</span> <span class="menu-arrow"></span></a>
                         <ul class="submenu_class" style="display: none;">
                             <li><a href="report.html">Quality Report</a></li>
                             <li><a href="rate-product.html">Rate product</a></li>
@@ -117,76 +100,66 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title mt-5">Add Vendor</h3>
-					</div>
+                        <h3 class="page-title mt-5">Add Tasks</h3> </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form method="post" action="addVendor">
+                    <form method="post" action="addTask">
                         <div class="row formtype">
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <div class="form-group">
-                                    <label>Id</label>
-                                    <input class="form-control" type="text" name="vendorId" required>
-                                </div>
+                                    <label>Task ID</label>
+                                    <input name = "id"  class="form-control" type="number"  value="" required> </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <div class="form-group">
-                                    <label>Name</label>
-                                    <input class="form-control" type="text" name="name" required>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="text" class="form-control" name="email" required>
-								</div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Phone Number</label>
-                                    <input type="number" class="form-control" name="phoneNumber">
-								</div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Rating</label>
-                                    <input type="number" class="form-control" name="rating" required>
-								</div>
+                                    <label>Task Name</label>
+                                    <input name = "name"  class="form-control" type="text"  value="" required> </div>
                             </div>
 
-                            <button class="btn btn-primary btn-block" type="submit">Add Vendor</button>
-                                <%
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>Task Desciption</label>
+                                    <input name = "description"  class="form-control" type="text"  value="" required> </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <input name = "status"  class="form-control" type="text"  value="" required> </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label>Deadline</label>
+                                    <input type="date" name = "deadline" class="form-control" required> </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-block" type="submit" style="width: 20%;">Add Task</button>
+                            <%
 							Boolean isValid = (Boolean) request.getAttribute("valid");
 							if (isValid != null && !isValid) {
 						%>
-                            </div>
-                            <div style="color: red;">Cannot Add New Vendor</div>
-                                <%
-							}
-						%>
+                </div>
+                <div style="color: red;">Cannot Add New Task</div>
+                <%
+                    }
+                %>
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
+</div>
+<script src="disable.js"></script>
+<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="assets/js/jquery-3.5.1.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="assets/plugins/raphael/raphael.min.js"></script>
-<script src="assets/js/moment.min.js"></script>
-<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+<script src="assets/plugins/morris/morris.min.js"></script>
+<script src="assets/js/chart.morris.js"></script>
 <script src="assets/js/script.js"></script>
-<script>
-    $(function () {
-        $('#datetimepicker3').datetimepicker({
-            format: 'LT'
-        });
-    });
-</script>
 </body>
 
 </html>
