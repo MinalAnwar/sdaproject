@@ -26,6 +26,8 @@ function disable(){
 //for employee
 		var allemployeelink=document.querySelector('a[href="all-employee.jsp"]');
 		var addemployeelink=document.querySelector('a[href="add-employee.jsp"]');
+//for task
+		var addtasklink=document.querySelector('a[href="add-task.html"]');
 		if (isAdmin) {
             //quotation pages
 		}
@@ -50,6 +52,7 @@ function disable(){
 			addmateriallink.style.pointerEvents="none";
 			allemployeelink.style.pointerEvents="none";
 			addemployeelink.style.pointerEvents="none";
+			addtasklink.style.pointerEvents="none";
 
 			allorderlink.style.color="#999";
 			addorderlink.style.color="#999";
@@ -61,6 +64,7 @@ function disable(){
 			addmateriallink.style.color="#999";
 			allemployeelink.style.color="#999";
 			addemployeelink.style.color="#999";
+			addtasklink.style.color="#999";
 		}
 		});
 }

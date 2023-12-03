@@ -65,6 +65,11 @@
 								
 							</ul>
 						</li>
+						<li class="submenu"> <a href="#"><i class="fa-solid fa-file"></i><span>Tasks</span> <span class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="add-task.html">Add Task</a></li>
+							</ul>
+						</li>
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Order Material</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="all-orders.jsp">All Orders </a></li>

@@ -61,6 +61,11 @@
 								<li><a href="add-product.jsp"> Add Product </a></li>
 							</ul>
 						</li>
+						<li class="submenu"> <a href="#"><i class="fa-solid fa-file"></i><span>Tasks</span> <span class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="add-task.html">Add Task</a></li>
+							</ul>
+						</li>
 						<li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="all-materials.jsp"> All Materials </a></li>
@@ -85,6 +90,11 @@
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="report.html">Quality Report</a></li>
 								<li><a href="rate-product.html">Rate product</a></li>
+							</ul>
+						</li>
+						<li class="submenu"> <a href="#"><i class="fa-solid fa-star"></i><span>Task</span> <span class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="report.html">Add Task</a></li>
 							</ul>
 						</li>
 					</ul>
