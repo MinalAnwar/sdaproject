@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 	<title>ERP</title>
-	<link rel="shortcut icon" type="image/x-icon" href="download.png">
+	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
 	<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
 	<link rel="stylesheet" href="assets/css/feathericon.min.css">
 	<link rel="stylesheet" href="assets/plugins/morris/morris.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap-datetimepicker.min.css">
-	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/style.css"> 
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 	<script src="https://kit.fontawesome.com/4ecf238d25.js" crossorigin="anonymous"></script>
@@ -38,7 +38,7 @@
 								<h6>Soeng Souy</h6>
 								<p class="text-muted mb-0">Administrator</p>
 							</div>
-						</div> <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="login.html">Logout</a></div>
+						</div> <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="index.jsp">Logout</a></div>
 				</li>
 			</ul>
 		
@@ -51,35 +51,35 @@
 						<li class="list-divider"></li>
 						<li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span>Employee</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-employee.html"> All Employees </a></li>
-								<li><a href="add-employee.html"> Add Employee </a></li>
+								<li><a href="all-employee.jsp"> All Employees </a></li>
+								<li><a href="add-employee.jsp"> Add Employee </a></li>
 							
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-bars"></i></fa-solid><span>Products</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-jackets.html">All Products </a></li>
-								<li><a href="add-jacket.html"> Add Product </a></li>
+								<li><a href="all-products.jsp">All Products </a></li>
+								<li><a href="add-product.jsp"> Add Product </a></li>
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-materials.html"> All Materials </a></li>
-								<li><a href="create-materials.html"> Add Material </a></li>
-								
-							</ul>
-						</li>
-						<li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Vendors</span> <span class="menu-arrow"></span></a>
-							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-vendors.jsp"> All Vendors </a></li>
-								<li><a href="add-vendors.html"> Add Vendors </a></li>
+								<li><a href="all-materials.jsp"> All Materials </a></li>
+								<li><a href="add-material.jsp"> Add Material </a></li>
 								
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Order Material</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-orders.html">All Orders </a></li>
-								<li><a href="add-order.html"> Add Order </a></li>
+								<li><a href="all-orders.jsp">All Orders </a></li>
+								<li><a href="add-order.jsp"> Add Order </a></li>
+							</ul>
+						</li>
+						<li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Vendors</span> <span class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="all-vendors.jsp"> All Vendors </a></li>
+								<li><a href="add-vendors.jsp"> Add Vendors </a></li>
+
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-star"></i><span>Quality</span> <span class="menu-arrow"></span></a>
@@ -97,46 +97,52 @@
 				<div class="page-header">
 					<div class="row align-items-center">
 						<div class="col">
-							<h3 class="page-title mt-5">Add Vendor</h3> </div>
+							<h3 class="page-title mt-5">Add Order</h3> </div>
 					</div>
 				</div>
+				<form method="post" action="addOrder">
 				<div class="row">
-					<div class="col-lg-12">
-						<form>
-							<div class="row formtype">
-								<div class="col-md-4">
-									<div class="form-group">
-										<label>Name</label>
-										<input class="form-control" type="text" value="" required> </div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-										<label>Rating</label>
-										<input type="number" class="form-control" id="usr" required> </div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-										<label>Email</label>
-										<input type="text" class="form-control" id="usr" required> </div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-										<label>Phone Number</label>
-										<input type="number" class="form-control" id="usr1"> </div>
-								</div>
-						</form>
+					<div class="col-md-auto">
+						<label for="exampleFormControlInput1" class="form-label">OrderNumber</label>
+						<input type="text" class="form-control" name="orderNumber" id="exampleFormControlInput1" placeholder="Enter Order Number" style="width: 300px;">
+					</div>
+					<div class="col-md-auto">
+						<label for="exampleFormControlInput1" class="form-label">Items</label>
+						<input type="text" class="form-control" name="items" id="exampleFormControlInput1" placeholder="Enter Item List" style="width: 300px;">
+					</div>
+					<div class="col-md-auto">
+						<label for="exampleFormControlInput1" class="form-label">TotalAmount</label>
+						<input type="number" id="totalAmount" name="totalAmount" min="1" max="1000000" class="form-control">
 					</div>
 				</div>
-				<button type="button" class="btn btn-primary buttonedit1" onclick="">Create Vendor</button>
+				<div class="row my-2">
+					<div class="col-md-auto">
+						<label for="exampleFormControlInput1" class="form-label">Date</label>
+						<input type="text" class="form-control" name="date" id="exampleFormControlInput1" placeholder="Enter Due Date" style="width: 300px;">
+					</div>
+					<div class="col-md-auto">
+						<label for="exampleFormControlInput1" class="form-label">TotalItems</label>
+						<input type="number" id="quantity" name="totalItems" min="1" max="10000" class="form-control">
+					</div>
+				</div>
+				<div class="row my-2">
+					<div class="col-md-auto">
+						<label for="exampleFormControlInput1" class="form-label">OrderStatus</label>
+						<input type="text" class="form-control" name="orderStatus" id="exampleFormControlInput1" placeholder="Enter Order Status" style="width: 300px;">
+					</div>
+				</div>
+					<button type="submit" class="btn btn-primary my-3">Add Order</button>
+				</form>
 			</div>
 		</div>
 	</div>
 	<script src="assets/js/jquery-3.5.1.min.js"></script>
 	<script src="assets/js/popper.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/moment.min.js"></script>
+	<script src="assets/js/select2.min.js"></script>
 	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="assets/plugins/raphael/raphael.min.js"></script>
-	<script src="assets/js/moment.min.js"></script>
 	<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
 	<script src="assets/js/script.js"></script>
 	<script>

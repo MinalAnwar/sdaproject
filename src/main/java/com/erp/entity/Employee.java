@@ -13,7 +13,7 @@ public class Employee {
     private String gender;
     private String dateOfJoining;
 
-    int salary;
+    private int salary;
     public Employee(String name, int employeeId, String designation, String address, String email, String phoneNumber, int age, String dateOfBirth, String cnic, String gender, String dateOfJoining,int salary) {
         this.name = name;
         this.employeeId = employeeId;

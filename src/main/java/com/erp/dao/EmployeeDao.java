@@ -61,4 +61,10 @@ public class EmployeeDao {
                 throw new RuntimeException(e);
             }
         }
+        public ResultSet viewAllEmployees() throws SQLException {
+            Database dataAccess = new Database();
+            Connection connection = dataAccess.getConnection();
+            Statement statement = connection.createStatement();
+            return statement.executeQuery("SELECT * FROM employee");
+        }
 }

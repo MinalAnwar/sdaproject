@@ -1,6 +1,7 @@
 ﻿<%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="com.erp.Database.Database" %>
+<%@ page import="com.erp.entity.Admin" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,61 +26,76 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<link rel="stylesheet" href="assets/css/table.css">
+
 	<script>
 
-		$(document).ready(function(){
+		$(document).ready(function () {
 			$('[data-toggle="tooltip"]').tooltip();
 			var actions = $("table td:last-child").html();
-			// Append table with add row form on add new button click
 
-			// Add row on add button click
-			$(document).on("click", ".add", function(){
+			$(document).on("click", ".add", function () {
 				var empty = false;
 				var input = $(this).parents("tr").find('input[type="text"]');
-				input.each(function(){
-					if(!$(this).val()){
+				input.each(function () {
+					if (!$(this).val()) {
 						$(this).addClass("error");
 						empty = true;
-					} else{
+					} else {
 						$(this).removeClass("error");
 					}
 				});
 				$(this).parents("tr").find(".error").first().focus();
-				if(!empty){
-					input.each(function(){
+				if (!empty) {
+					input.each(function () {
 						$(this).parent("td").html($(this).val());
 					});
 					$(this).parents("tr").find(".add, .edit").toggle();
 					$(".add-new").removeAttr("disabled");
 				}
 			});
-			// Edit row on edit button click
-			$(document).on("click", ".edit", function(){
-				$(this).parents("tr").find("td:not(:last-child):not(:first-child )").each(function(){
-					$(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+			$(document).on("click", ".edit", function () {
+				var currentRow = $(this).closest("tr");
+				var arr = [];
+				//itemid
+				var itemId = $(this).closest("tr").find("td:first-child").text();
+				currentRow.find("td:not(:last-child)").each(function () {
+					var currentText = $(this).text();
+					$(this).html('<input type="text" class="form-control" value="' + currentText + '">');
+					arr.push($(this).find('input[type="text"]').val());
 				});
-				$(this).parents("tr").find(".add, .edit").toggle();
-				$(".add-new").attr("disabled", "disabled");
-			});
-			// Delete row on delete button click
-			//$(document).on("click", ".delete", function(){
-			//$(this).parents("tr").remove();
-			//$(".add-new").removeAttr("disabled")
+				currentRow.find(".add, .edit").toggle();
+				$(".add-new").prop("disabled", true);
+				console.log("Initial Input values:", arr);
 
-			//;
-			//});
+				//when add button is pressed
+				$(".add").on("click", function () {
+					// Array to store input values when "Add" is pressed
+					var inputValues = [];
+					currentRow.find("td:not(:last-child)").each(function () {
+						// Store the input values in the array
+						inputValues.push($(this).find('input[type="text"]').val());
+					});
+					//printing values
+					console.log("Updated Input values:", inputValues);
+					$.ajax({
+						type: 'GET',
+						url: 'orderUpdate?orderId=' + inputValues[0] + '&totalAmount=' + inputValues[1] + '&itemList=' + inputValues[2] + '&date=' + inputValues[3] + '&totalItems=' + inputValues[4]+ '&orderStatus=' + inputValues[5]+ '&oldID=' + arr[0],
+						success: function (response) {
+							// On successful update, you can handle the response if needed
+							location.reload();
+						},
+						error: function (error) {
+							// Handle errors here
+							console.log(error);
+						}
+					});
+
+
+				});
+			});
 		});
 
 	</script>
-
-
-
-
-
-
-
-
-
 
 </head>
 
@@ -103,7 +119,7 @@
 							<h6>Soeng Souy</h6>
 							<p class="text-muted mb-0">Administrator</p>
 						</div>
-					</div> <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="login.html">Logout</a></div>
+					</div> <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="index.jsp">Logout</a></div>
 			</li>
 		</ul>
 
@@ -137,7 +153,14 @@
 					<li class="submenu"> <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Order Material</span> <span class="menu-arrow"></span></a>
 						<ul class="submenu_class" style="display: none;">
 							<li><a href="all-orders.jsp">All Orders </a></li>
-							<li><a href="add-order.html"> Add Order </a></li>
+							<li><a href="add-order.jsp"> Add Order </a></li>
+						</ul>
+					</li>
+					<li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Vendors</span> <span class="menu-arrow"></span></a>
+						<ul class="submenu_class" style="display: none;">
+							<li><a href="all-vendors.jsp"> All Vendors </a></li>
+							<li><a href="add-vendors.jsp"> Add Vendors </a></li>
+
 						</ul>
 					</li>
 					<li class="submenu"> <a href="#"><i class="fa-solid fa-star"></i><span>Quality</span> <span class="menu-arrow"></span></a>
@@ -156,7 +179,7 @@
 				<div class="row align-items-center">
 					<div class="col">
 						<div class="mt-5">
-							<h4 class="card-title float-left mt-2">All Materials</h4>
+							<h4 class="card-title float-left mt-2">All Orders</h4>
 
 						</div>
 					</div>
@@ -176,15 +199,14 @@
 										<th  >ItemList</th>
 										<th >Date</th>
 										<th >TotalItems</th>
+										<th >OrderStatus</th>
 									</tr>
 
 									</thead>
 									<tbody>
 									<%
-										Database dataAccess = new Database();
-										Connection connection = dataAccess.getConnection();
-										Statement statement = connection.createStatement();
-										ResultSet result = statement.executeQuery("SELECT * FROM `order`");
+										Admin user = new Admin();
+										ResultSet result = user.viewOrder();
 										try {
 											while (result.next()) {
 									%>
@@ -192,8 +214,9 @@
 										<td><%= result.getString("OrderNumber") %></td>
 										<td><%= result.getInt("totalAmount") %></td>
 										<td><%= result.getString("ItemList") %></td>
-										<td><%= result.getDate("date") %></td>
+										<td><%= result.getDate("dateOrder") %></td>
 										<td><%= result.getInt("totalItems") %></td>
+										<td><%= result.getString("orderStatus") %></td>
 										<td>
 											<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
 											<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>

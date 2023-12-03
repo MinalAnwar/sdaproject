@@ -3,9 +3,10 @@ package com.erp.entity;
 import com.erp.dao.EmployeeDao;
 import com.erp.dao.InventoryDao;
 import com.erp.dao.OrderDao;
+import com.erp.dao.VendorDao;
 
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Admin extends User {
@@ -23,6 +24,13 @@ public class Admin extends User {
         // then add the employee in database
         EmployeeDao insertData = new EmployeeDao();
         boolean insertionCheck = insertData.addEmployeeDAO(obj);
+        return insertionCheck;
+    }
+    public boolean addVendor(Vendor obj) {
+        //got data from controller not send it to doa and
+        // then add the employee in database
+        VendorDao insertData = new VendorDao();
+        boolean insertionCheck = insertData.addVendor(obj);
         return insertionCheck;
     }
 
@@ -46,6 +54,32 @@ public class Admin extends User {
         }
 
         return insertionCheck;
+    }
+
+    public boolean updateInventory(int oldId,Inventory obj,String status)
+    {
+        boolean insertionCheck = false;
+        if (status.equalsIgnoreCase("rawmaterial")) {
+            List<RawMaterial> rawMaterials = obj.getRawMaterials(); //get the list from inventory
+            // Get the last added raw material
+            RawMaterial lastAddedRawMaterial = rawMaterials.get(rawMaterials.size() - 1); // get last obj of raw material added
+            InventoryDao insertData = new InventoryDao();
+            insertionCheck = insertData.updateRawMaterial(oldId,lastAddedRawMaterial);
+        } else if (status.equalsIgnoreCase("product")) {
+            List<Product> products = obj.getProducts(); //get the list from inventory
+            // Get the last added raw material
+            Product lastAddedProduct = products.get(products.size() - 1); // get last obj of raw material added
+            InventoryDao insertData = new InventoryDao();
+            insertionCheck = insertData.updateProduct(oldId,lastAddedProduct);
+        }
+
+        return insertionCheck;
+
+    }
+    public boolean updateOrder(String oldOrderNumber,Order obj)
+    {
+        OrderDao dataUpdate=new OrderDao();
+        return dataUpdate.updateOrder(oldOrderNumber,obj);
     }
 
     public boolean deleteEmployee(int id) {
@@ -77,58 +111,43 @@ public class Admin extends User {
         return insertionCheck;
     }
 
-    public void sendEmailToVendor() throws SQLException {
 
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sdapro", "root", "bakhti");
-        ArrayList<String> Material_name_List = new ArrayList<>();
-        Statement st = conn.createStatement();
-        String sql = ("SELECT * FROM rawmaterial");
-        ResultSet rs = st.executeQuery(sql);
-        String m_text="";
 
-        while (rs.next()) {
-
-            int id = rs.getInt("RawMaterialid");
-            String m_name = rs.getString("name");
-            String totatq = rs.getString("totalQuantity");
-            int quantity = Integer.parseInt(totatq);
-            if (quantity < 5) {
-                Material_name_List.add(m_name);
-                m_text +="This Material  "+ m_name+" is short"+"\n\n";
-            }
-        }
-
-        GEmailSender gEmailSender = new GEmailSender();
-        ArrayList<String> Vendor_name_List = new ArrayList<>();
-        Statement v_st = conn.createStatement();
-        String v_sql = ("SELECT * FROM vendor");
-        ResultSet v_rs = v_st.executeQuery(v_sql);
-        while (v_rs.next())
-        {
-            String v_e = v_rs.getString("email");
-            Vendor_name_List.add(v_e);
-        }
-
-        String from = "mnoumanjaveed@gmail.com";
-        String subject = "Notification of Materials Shortage and Request for Immediate Action";
-        String text = "Dear Vendor ,\n" +
-                "\n" +
-                "I hope this email finds you well. We've identified a shortage in our material inventory. This shortage is affecting our production schedule and commitments to clients. Please urgently provide an update on material availability and potential delivery timelines. If there are any expedited options or alternatives, we'd appreciate your assistance. Your prompt attention to this matter is crucial. Feel free to reach out for additional details. Thank you for your swift action.\n" +
-                "\n" +  m_text+
-                "Best regards,";
-
-        for (int i =0 ; i< Vendor_name_List.size() ;i++)
-        {
-            boolean b = gEmailSender.sendEmail(Vendor_name_List.get(i), from, subject, text);
-            if (b) {
-                System.out.println("Email is sent successfully"); // This message will be print on front-end
-            } else {
-                System.out.println("There is problem in sending email");
-            }
-
-        }
-
-        conn.close();
+    public ResultSet viewOrder() throws SQLException {
+        OrderDao obj = new OrderDao();
+        return obj.viewAllOrders();
     }
 
+    public ResultSet viewEmployee() throws SQLException {
+        EmployeeDao obj = new EmployeeDao();
+        return obj.viewAllEmployees();
+    }
+
+    public ResultSet viewInventory(String status) throws SQLException {
+        ResultSet result = null;
+        if (status.equalsIgnoreCase("rawmaterial")) {
+            InventoryDao viewData = new InventoryDao();
+            result =  viewData.viewAllMaterial();
+        } else if (status.equalsIgnoreCase("product")) {
+            InventoryDao viewData = new InventoryDao();
+            result =viewData.viewAllProduct();
+        }
+        return result;
+    }
+
+    public ResultSet viewVendors() throws SQLException {
+        VendorDao obj =new VendorDao();
+        return obj.viewAllVendors();
+    }
+
+
+    public boolean updateVendor(int oldID, Vendor obj) {
+        VendorDao updateData = new VendorDao();
+        return updateData.updateVendor(oldID,obj);
+    }
+
+    public boolean addOrder(Order obj) {
+        OrderDao dataInsert = new OrderDao();
+        return dataInsert.addOrder(obj);
+    }
 }

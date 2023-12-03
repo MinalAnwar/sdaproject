@@ -1,6 +1,7 @@
 ﻿<%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="com.erp.Database.Database" %>
+<%@ page import="com.erp.entity.Admin" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,13 +77,13 @@
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Order Material</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="all-orders.jsp">All Orders </a></li>
-								<li><a href="add-order.html"> Add Order </a></li>
+								<li><a href="add-order.jsp"> Add Order </a></li>
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Vendors</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="all-vendors.jsp"> All Vendors </a></li>
-								<li><a href="add-vendors.html"> Add Vendors </a></li>
+								<li><a href="add-vendors.jsp"> Add Vendors </a></li>
 
 							</ul>
 						</li>
@@ -200,10 +201,8 @@
 										</thead>
 										<tbody>
 										<%
-											Database dataAccess = new Database();
-											Connection connection = dataAccess.getConnection();
-											Statement statement = connection.createStatement();
-											ResultSet result = statement.executeQuery("SELECT * FROM product");
+											Admin user = new Admin();
+											ResultSet result = user.viewInventory("product");
 											try {
 												while (result.next()) {
 										%>
@@ -212,11 +211,6 @@
 											<td><%= result.getString("name") %></td>
 											<td><%= result.getInt("price") %></td>
 											<td><%= result.getInt("totalQuantity") %></td>
-											<td>
-												<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
-												<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
-												<a class="delete" title="Delete" data-target="#delete_asset" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
-											</td>
 										</tr>
 										<%
 												}

@@ -1,6 +1,7 @@
 ﻿<%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="com.erp.Database.Database" %>
+<%@ page import="com.erp.entity.Admin" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,61 +26,75 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<link rel="stylesheet" href="assets/css/table.css">
-		<script>
-			
-		$(document).ready(function(){
-		$('[data-toggle="tooltip"]').tooltip();
-		var actions = $("table td:last-child").html();
-		// Append table with add row form on add new button click
-		
-		// Add row on add button click
-		$(document).on("click", ".add", function(){
-		var empty = false;
-		var input = $(this).parents("tr").find('input[type="text"]');
-		input.each(function(){
-		if(!$(this).val()){
-		$(this).addClass("error");
-		empty = true;
-		} else{
-		$(this).removeClass("error");
-		}
+	<script>
+
+		$(document).ready(function () {
+			$('[data-toggle="tooltip"]').tooltip();
+			var actions = $("table td:last-child").html();
+
+			$(document).on("click", ".add", function () {
+				var empty = false;
+				var input = $(this).parents("tr").find('input[type="text"]');
+				input.each(function () {
+					if (!$(this).val()) {
+						$(this).addClass("error");
+						empty = true;
+					} else {
+						$(this).removeClass("error");
+					}
+				});
+				$(this).parents("tr").find(".error").first().focus();
+				if (!empty) {
+					input.each(function () {
+						$(this).parent("td").html($(this).val());
+					});
+					$(this).parents("tr").find(".add, .edit").toggle();
+					$(".add-new").removeAttr("disabled");
+				}
+			});
+			$(document).on("click", ".edit", function () {
+				var currentRow = $(this).closest("tr");
+				var arr = [];
+				//itemid
+				var itemId = $(this).closest("tr").find("td:first-child").text();
+				currentRow.find("td:not(:last-child)").each(function () {
+					var currentText = $(this).text();
+					$(this).html('<input type="text" class="form-control" value="' + currentText + '">');
+					arr.push($(this).find('input[type="text"]').val());
+				});
+				currentRow.find(".add, .edit").toggle();
+				$(".add-new").prop("disabled", true);
+				console.log("Initial Input values:", arr);
+
+				//when add button is pressed
+				$(".add").on("click", function () {
+					// Array to store input values when "Add" is pressed
+					var inputValues = [];
+					currentRow.find("td:not(:last-child)").each(function () {
+						// Store the input values in the array
+						inputValues.push($(this).find('input[type="text"]').val());
+					});
+					//printing values
+					console.log("Updated Input values:", inputValues);
+					$.ajax({
+						type: 'GET',
+						url: 'materialUpdate?materialId=' + inputValues[0] + '&materialName=' + inputValues[1] + '&materialQuantity=' + inputValues[2] + '&materialPrice=' + inputValues[3] + '&oldID=' + arr[0],
+						success: function (response) {
+							// On successful update, you can handle the response if needed
+							location.reload();
+						},
+						error: function (error) {
+							// Handle errors here
+							console.log(error);
+						}
+					});
+
+
+				});
+			});
 		});
-		$(this).parents("tr").find(".error").first().focus();
-		if(!empty){
-		input.each(function(){
-		$(this).parent("td").html($(this).val());
-		});
-		$(this).parents("tr").find(".add, .edit").toggle();
-		$(".add-new").removeAttr("disabled");
-		}
-		});
-		// Edit row on edit button click
-		$(document).on("click", ".edit", function(){
-		$(this).parents("tr").find("td:not(:last-child):not(:first-child )").each(function(){
-		$(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-		});
-		$(this).parents("tr").find(".add, .edit").toggle();
-		$(".add-new").attr("disabled", "disabled");
-		});
-		// Delete row on delete button click
-		//$(document).on("click", ".delete", function(){
-		//$(this).parents("tr").remove();
-		//$(".add-new").removeAttr("disabled")
-		
-		//;
-		//});
-		});
-	
-		</script>
 
-
-
-
-
-
-
-
-
+	</script>
 	
 </head>
 
@@ -103,7 +118,7 @@
 								<h6>Soeng Souy</h6>
 								<p class="text-muted mb-0">Administrator</p>
 							</div>
-						</div> <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="login.html">Logout</a></div>
+						</div> <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="index.jsp">Logout</a></div>
 				</li>
 			</ul>
 		
@@ -137,7 +152,14 @@
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Order Material</span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li><a href="all-orders.jsp">All Orders </a></li>
-								<li><a href="add-order.html"> Add Order </a></li>
+								<li><a href="add-order.jsp"> Add Order </a></li>
+							</ul>
+						</li>
+						<li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Vendors</span> <span class="menu-arrow"></span></a>
+							<ul class="submenu_class" style="display: none;">
+								<li><a href="all-vendors.jsp"> All Vendors </a></li>
+								<li><a href="add-vendors.jsp"> Add Vendors </a></li>
+
 							</ul>
 						</li>
 						<li class="submenu"> <a href="#"><i class="fa-solid fa-star"></i><span>Quality</span> <span class="menu-arrow"></span></a>
@@ -171,19 +193,17 @@
 									<table class="datatable table table-stripped table table-hover table-center mb-0">
 										<thead>
 											<tr>
-												<th  >ID</th>
-											<th  >Name</th>
-											<th  >Stock</th>
-											<th >Price</th>
-											<th ></th>
+												<th >ID</th>
+												<th  >Name</th>
+												<th  >Stock</th>
+												<th >Price</th>
+												<th ></th>
 											</tr>
 											</thead>
 											<tbody>
 											<%
-												Database dataAccess = new Database();
-												Connection connection = dataAccess.getConnection();
-												Statement statement = connection.createStatement();
-												ResultSet result = statement.executeQuery("SELECT * FROM rawmaterial");
+												Admin user = new Admin();
+												ResultSet result = user.viewInventory("rawmaterial");
 												try {
 													while (result.next()) {
 											%>
@@ -193,7 +213,9 @@
 												<td><%= result.getInt("price") %></td>
 												<td><%= result.getInt("totalQuantity") %></td>
 												<td>
-													<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
+
+
+													<a class="add" title="Add" data-material-id="<%= result.getInt("RawMaterialid")%>"><i class="material-icons">&#xE03B;</i></a>
 													<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
 													<a class="delete" title="Delete" data-target="#delete_asset" onclick="sendRequestWithId(this)" data-material-id="<%= result.getInt("RawMaterialid")%>"><i class="material-icons">&#xE872;</i></a>
 
@@ -236,6 +258,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 	</div>

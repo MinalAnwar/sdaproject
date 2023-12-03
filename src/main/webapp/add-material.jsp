@@ -39,7 +39,7 @@
 							<h6>Soeng Souy</h6>
 							<p class="text-muted mb-0">Administrator</p>
 						</div>
-					</div> <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="login.html">Logout</a></div>
+					</div> <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="index.jsp">Logout</a></div>
 			</li>
 		</ul>
 
@@ -60,7 +60,7 @@
 					<li class="submenu"> <a href="#"><i class="fa-solid fa-bars"></i></fa-solid><span>Products</span> <span class="menu-arrow"></span></a>
 						<ul class="submenu_class" style="display: none;">
 							<li><a href="all-products.jsp">All Products </a></li>
-							<li><a href="add-product.html"> Add Product </a></li>
+							<li><a href="add-product.jsp"> Add Product </a></li>
 						</ul>
 					</li>
 					<li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span class="menu-arrow"></span></a>
@@ -73,7 +73,14 @@
 					<li class="submenu"> <a href="#"><i class="fa-solid fa-clipboard-list"></i><span>Order Material</span> <span class="menu-arrow"></span></a>
 						<ul class="submenu_class" style="display: none;">
 							<li><a href="all-orders.jsp">All Orders </a></li>
-							<li><a href="add-order.html"> Add Order </a></li>
+							<li><a href="add-order.jsp"> Add Order </a></li>
+						</ul>
+					</li>
+					<li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Vendors</span> <span class="menu-arrow"></span></a>
+						<ul class="submenu_class" style="display: none;">
+							<li><a href="all-vendors.jsp"> All Vendors </a></li>
+							<li><a href="add-vendors.jsp"> Add Vendors </a></li>
+
 						</ul>
 					</li>
 					<li class="submenu"> <a href="#"><i class="fa-solid fa-star"></i><span>Quality</span> <span class="menu-arrow"></span></a>
