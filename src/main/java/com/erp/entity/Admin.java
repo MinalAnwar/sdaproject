@@ -167,4 +167,24 @@ public class Admin extends User {
         TaskDao insertData = new TaskDao();
         return insertData.addTask(obj);
     }
+
+    public boolean assignTask(String date, String orderId, int employeeId) {
+        TaskDao addTask = new TaskDao();
+        return addTask.assignTask(date,orderId,employeeId);
+    }
+
+    public ResultSet viewAssignedTasks() throws SQLException {
+        TaskDao obj = new TaskDao();
+        return obj.viewAssignedTasks();
+    }
+
+    public boolean deleteAssignedTask(String orderId, int employeeId) {
+        TaskDao dataDelete = new TaskDao();
+        return dataDelete.deleteAssignedTask(orderId,employeeId);
+    }
+
+    public boolean updateAssignTask(String date, String orderid, int employeeid, String oldOrderid, int oldEmployeeid) {
+        TaskDao updateData = new TaskDao();
+        return updateData.updateAssignTask(date,orderid,employeeid,oldOrderid,oldEmployeeid);
+    }
 }

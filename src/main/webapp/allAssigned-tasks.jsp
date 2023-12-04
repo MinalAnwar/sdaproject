@@ -80,7 +80,7 @@
                     console.log("Updated Input values:", inputValues);
                     $.ajax({
                         type: 'GET',
-                        url: 'taskupdate?taskId=' + inputValues[0] + '&taskName=' + inputValues[1] + '&taskDescription=' + inputValues[2] + '&taskstatus=' + inputValues[3] + '&taskdeadline=' + inputValues[4]+ '&oldID=' + arr[0],
+                        url: 'assignedtaskupdate?date=' + inputValues[0] + '&orderID=' + inputValues[1] + '&employeeID=' + inputValues[2] + '&oldOrderID=' + arr[1] + '&oldEmployeeID=' + arr[2],
                         success: function (response) {
                             // On successful update, you can handle the response if needed
                             location.reload();
@@ -102,92 +102,89 @@
 
 <body>
 <jsp:include page="/templates/dashboard.jsp"/>
-    <div class="page-wrapper">
-        <div class="content container-fluid">
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title mt-5">All Employees</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="card card-table">
-                        <div class="card-body booking_card">
-                            <div class="table-responsive">
-                                <table class="datatable table table-stripped table table-hover table-center mb-0" data-sorter="false">
-                                    <thead>
-                                    <tr>
-                                        <th >ID</th>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Status</th>
-                                        <th>Deadline</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <%
-                                        Admin user = new Admin();
-                                        ResultSet result = user.viewTasks();
-                                        try {
-                                            while (result.next()) {
-                                    %>
-                                    <tr>
-                                        <td><%= result.getInt("taskId") %></td>
-                                        <td><%= result.getString("name") %></td>
-                                        <td><%= result.getString("description") %></td>
-                                        <td><%= result.getString("status") %></td>
-                                        <td><%= result.getDate("deadline") %></td>
-                                        <td>
-                                            <a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
-                                            <a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
-                                            <a class="delete" title="Delete" data-target="#delete_asset" onclick="sendRequestWithId(this)" data-task-id="<%= result.getInt("taskId")%>"><i class="material-icons">&#xE872;</i></a>
-
-                                            <%
-
-                                                Boolean isValid = (Boolean) request.getAttribute("valid");
-                                                if (isValid != null && !isValid) {
-                                            %>
-                                            </p>
-                                            <div style="color: red;">Cannot delete Employee</div>
-                                            <%
-                                                }
-                                            %>
-                                        </td>
-                                    </tr>
-                                    <%
-                                            }
-                                        } catch (Exception e) {
-                                            throw new RuntimeException(e);
-                                        }
-                                    %>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title mt-5">All Employees</h3>
                 </div>
             </div>
         </div>
-        <div id="delete_asset" class="modal fade delete-modal" role="dialog">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-body text-center"> <img src="assets/img/sent.png" alt="" width="50" height="46">
-                        <h3 class="delete_class">Do you really want to delete these records? This process cannot be undone.</h3>
-                        <div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
-                            <button type="submit" id="delete_button_modal" data-dismiss="modal" class="btn btn-danger">Delete</button>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card card-table">
+                    <div class="card-body booking_card">
+                        <div class="table-responsive">
+                            <table class="datatable table table-stripped table table-hover table-center mb-0" data-sorter="false">
+                                <thead>
+                                <tr>
+                                  <th >Date</th>
+                                    <th>OrderID</th>
+                                    <th>EmployeeID</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <%
+                                    Admin user = new Admin();
+                                    ResultSet result = user.viewAssignedTasks();
+                                    try {
+                                        while (result.next()) {
+                                %>
+                                <tr>
+                                    <td><%= result.getDate("taskDate") %></td>
+                                    <td><%= result.getString("orderId") %></td>
+                                    <td><%= result.getInt("employeeId") %></td>
+                                    <td>
+                                        <a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
+                                        <a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
+                                        <a class="delete" title="Delete" data-target="#delete_asset" onclick="sendRequestWithId(this)"  data-order-id="<%= result.getString("orderId")%>" data-employee-id="<%= result.getInt("employeeId")%>"><i class="material-icons">&#xE872;</i></a>
+
+                                        <%
+
+                                            Boolean isValid = (Boolean) request.getAttribute("valid");
+                                            if (isValid != null && !isValid) {
+                                        %>
+                                        </p>
+                                        <div style="color: red;">Cannot delete task</div>
+                                        <%
+                                            }
+                                        %>
+                                    </td>
+                                </tr>
+                                <%
+                                        }
+                                    } catch (Exception e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                %>
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div id="delete_asset" class="modal fade delete-modal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center"> <img src="assets/img/sent.png" alt="" width="50" height="46">
+                    <h3 class="delete_class">Do you really want to delete these records? This process cannot be undone.</h3>
+                    <div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+                        <button type="submit" id="delete_button_modal" data-dismiss="modal" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 <script>
     function sendRequestWithId(element) {
-        var taskId=element.getAttribute("data-task-id");
+        var orderId=element.getAttribute("data-order-id");
+        var employeeId = element.getAttribute("data-employee-id");
         //show alert by using its id and class
         $('#delete_asset').modal('show');
 
@@ -196,16 +193,17 @@
             // Make an AJAX request to delete the record
             $.ajax({
                 type: 'GET',
-                url: 'taskdelete?taskID=' + taskId,
+                url: 'assigntaskdelete?orderID=' + orderId+'&employeeID='+employeeId,
                 success: function (response) {
                     // On successful deletion, remove the row
-                    $('#row_' + taskId).remove();
+                    $('#row_' + orderId).remove();
                     // Hide the modal using its id after deletion
                     $('#delete_asset').modal('hide');
                     location.reload();
                 },
                 error: function (error) {
                     $('#delete_asset').modal('hide');
+                    location.reload();
                 }
             });
 

@@ -27,13 +27,11 @@ public class LoginControl extends HttpServlet {
                 inventory = new Inventory();
                 session.setAttribute("inventory", inventory);
             }
-            //response.sendRedirect(request.getContextPath() + "/dashboard.jsp");
+            
             String designation =obj.getDesignation(request.getParameter("email"),request.getParameter("password"));
-            System.out.println(designation);
-            request.setAttribute("valid", isValid);
-            request.setAttribute("designation", designation);
-            RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
-            view.forward(request, response);
+            System.out.println(designation);;
+            session.setAttribute("designation",designation);
+            response.sendRedirect(request.getContextPath() + "/dashboard.jsp");
         }
         else {
             request.setAttribute("valid", isValid);
