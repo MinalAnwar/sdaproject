@@ -107,22 +107,22 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Material Id</label>
-									<input type="text" class="form-control" required name="id"> </div>
+									<input type="number" placeholder="5" class="form-control" required name="id"> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Name</label>
-									<input type="text" class="form-control"  required name="name"> </div>
+									<input type="text" placeholder="saim" class="form-control"  required name="name"> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Quantity</label>
-									<input type="text" class="form-control" required name="stock"> </div>
+									<input type="number" class="form-control" required name="stock"> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Price</label>
-									<input type="text" class="form-control" required name="price"> </div>
+									<input type="number" placeholder="50" class="form-control" required name="price"> </div>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary buttonedit1">ADD</button>

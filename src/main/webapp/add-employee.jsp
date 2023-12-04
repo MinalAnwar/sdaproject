@@ -108,34 +108,34 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Employee ID</label>
-									<input name = "id"  class="form-control" type="number"  value="" required> </div>
+									<input name = "id"  class="form-control" type="number" placeholder="8"  value="" required> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Name</label>
-									<input name = "name"  class="form-control" type="text"  value="" required> </div>
+									<input name = "name"  class="form-control" type="text" placeholder="ali"  value="" required> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Age</label>
-									<input type="number" name = "age" class="form-control" required> </div>
+									<input type="number" name = "age" placeholder="18" class="form-control" required> </div>
 							</div>
 
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Phone Number</label>
-									<input type="text" name = "phoneNumber" class="form-control" required> </div>
+									<input type="number" name = "phoneNumber" placeholder="00000000000" class="form-control" required> </div>
 							</div>
 
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Address</label>
-									<input type="text" name = "address" class="form-control" required> </div>
+									<input type="text" name = "address" placeholder="fast nuces" class="form-control" required> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Email</label>
-									<input type="text" name = "email" class="form-control" required> </div>
+									<input type="email" name = "email" placeholder="fast@gmail.com" class="form-control" required> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
@@ -145,23 +145,23 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>CNIC</label>
-									<input type="text" name="cnic" class="form-control" required> </div>
+									<input type="text" name="cnic" placeholder="0000000000000" class="form-control" required> </div>
 							</div>
 
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Gender</label>
-									<input type="text" name="gender" class="form-control" required> </div>
+									<input type="text" name="gender" placeholder="male" class="form-control" required> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Salary</label>
-									<input type="number" name = "salary" class="form-control"  required> </div>
+									<input type="number" name = "salary" placeholder="40" class="form-control"  required> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Designation</label>
-									<input type="text" name ="designation" class="form-control"  required> </div>
+									<input type="text" name ="designation" placeholder="manager" class="form-control"  required> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">

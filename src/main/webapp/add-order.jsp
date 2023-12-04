@@ -103,31 +103,35 @@
 				<div class="row">
 					<div class="col-md-auto">
 						<label for="exampleFormControlInput1" class="form-label">OrderNumber</label>
-						<input type="text" class="form-control" name="orderNumber" id="exampleFormControlInput1" placeholder="Enter Order Number" style="width: 300px;">
+						<input type="number" class="form-control" name="orderNumber" id="exampleFormControlInput1" placeholder="5" style="width: 300px;">
 					</div>
 					<div class="col-md-auto">
 						<label for="exampleFormControlInput1" class="form-label">Items</label>
-						<input type="text" class="form-control" name="items" id="exampleFormControlInput1" placeholder="Enter Item List" style="width: 300px;">
+						<input type="text" class="form-control" name="items" id="exampleFormControlInput1" placeholder="jacket" style="width: 300px;">
 					</div>
 					<div class="col-md-auto">
 						<label for="exampleFormControlInput1" class="form-label">TotalAmount</label>
-						<input type="number" id="totalAmount" name="totalAmount" min="1" max="1000000" class="form-control">
+						<input type="number" id="totalAmount" placeholder="500" name="totalAmount" min="1" max="1000000" class="form-control">
 					</div>
 				</div>
 				<div class="row my-2">
 					<div class="col-md-auto">
 						<label for="exampleFormControlInput1" class="form-label">Date</label>
-						<input type="text" class="form-control" name="date" id="exampleFormControlInput1" placeholder="Enter Due Date" style="width: 300px;">
+						<input type="date" class="form-control" name="date" id="exampleFormControlInput1" placeholder="Enter Due Date" style="width: 300px;">
 					</div>
 					<div class="col-md-auto">
 						<label for="exampleFormControlInput1" class="form-label">TotalItems</label>
-						<input type="number" id="quantity" name="totalItems" min="1" max="10000" class="form-control">
+						<input type="number" id="quantity" placeholder="500" name="totalItems" min="1" max="10000" class="form-control">
 					</div>
 				</div>
 				<div class="row my-2">
 					<div class="col-md-auto">
-						<label for="exampleFormControlInput1" class="form-label">OrderStatus</label>
-						<input type="text" class="form-control" name="orderStatus" id="exampleFormControlInput1" placeholder="Enter Order Status" style="width: 300px;">
+						<label for="exampleFormControlInput1" class="form-label my-3 mx-2">OrderStatus</label>
+						<select id="dropdown" name="Status">
+							<option value="apple">Pending</option>
+							<option value="banana">Completed</option>
+							<option value="orange">inProgress</option>
+						</select>
 					</div>
 				</div>
 					<button type="submit" class="btn btn-primary my-3">Add Order</button>

@@ -108,36 +108,31 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Id</label>
-                                    <input class="form-control" type="text" name="vendorId" required>
+                                    <input class="form-control" type="number" placeholder="4" name="vendorId" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input class="form-control" type="text" name="name" required>
+                                    <input class="form-control" type="text" placeholder="ahmad" name="name" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" class="form-control" name="email" required>
+                                    <input type="email" class="form-control" placeholder="ahmad@gmil.com" name="email" required>
 								</div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Phone Number</label>
-                                    <input type="number" class="form-control" name="phoneNumber">
+                                    <input type="number" class="form-control" placeholder="00000000000" name="phoneNumber">
 								</div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Rating</label>
-                                    <input type="number" class="form-control" name="rating" required>
-								</div>
-                            </div>
-
-                            <button class="btn btn-primary btn-block" type="submit">Add Vendor</button>
-                                <%
+						</div>
+						<div class="mx-2">
+							<button class="btn btn-primary">Add Vendor</button>
+							<%
 							Boolean isValid = (Boolean) request.getAttribute("valid");
 							if (isValid != null && !isValid) {
 						%>
@@ -146,6 +141,7 @@
                                 <%
 							}
 						%>
+						</div>
                     </form>
                 </div>
             </div>
