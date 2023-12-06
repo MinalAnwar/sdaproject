@@ -1,5 +1,7 @@
 package com.erp.entity;
 
+import com.erp.dao.UserDao;
+
 public class User {
     private String name;
     private String userName;
@@ -128,4 +130,21 @@ public class User {
     public String getGender() {
         return gender;
     }
+
+    public boolean updateProfile(int id,String name, String designation, String dateOfBirth, String email, String phoneNumber, String address,String cnic,int age) {
+        UserDao updateData = new UserDao();
+        return updateData.updateProfile(id,name,designation,dateOfBirth,email,phoneNumber,address,cnic,age);
+    }
+
+    public boolean changePassword(int id,String oldPassword, String newPassword, String confirmedPassword) {
+        UserDao updateObj = new UserDao();
+        return updateObj.changePassword(id,oldPassword,newPassword,confirmedPassword);
+    }
+
+    public boolean signup(String username, String password, String confrimPassword) {
+        UserDao obj = new UserDao();
+        return obj.signUp(username,password,confrimPassword);
+    }
+
+
 }

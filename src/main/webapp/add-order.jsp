@@ -35,11 +35,11 @@
 				<div class="row">
 					<div class="col-md-auto">
 						<label for="exampleFormControlInput1" class="form-label">OrderNumber</label>
-						<input type="text" class="form-control" name="orderNumber" id="exampleFormControlInput1" placeholder="Enter Order Number" style="width: 300px;">
+						<input type="text" class="form-control" name="orderNumber" id="exampleFormControlInput1" placeholder="340-56788-1" style="width: 300px;">
 					</div>
 					<div class="col-md-auto">
 						<label for="exampleFormControlInput1" class="form-label">Items</label>
-						<input type="text" class="form-control" name="items" id="exampleFormControlInput1" placeholder="Enter Item List" style="width: 300px;">
+						<input type="text" class="form-control" name="items" id="exampleFormControlInput1" placeholder="Enter Item List with ," style="width: 300px;">
 					</div>
 					<div class="col-md-auto">
 						<label for="exampleFormControlInput1" class="form-label">TotalAmount</label>
@@ -49,7 +49,7 @@
 				<div class="row my-2">
 					<div class="col-md-auto">
 						<label for="exampleFormControlInput1" class="form-label">Date</label>
-						<input type="text" class="form-control" name="date" id="exampleFormControlInput1" placeholder="Enter Due Date" style="width: 300px;">
+						<input type="date" class="form-control" name="date" id="exampleFormControlInput1" placeholder="Enter Due Date" style="width: 300px;">
 					</div>
 					<div class="col-md-auto">
 						<label for="exampleFormControlInput1" class="form-label">TotalItems</label>
@@ -57,10 +57,18 @@
 					</div>
 				</div>
 				<div class="row my-2">
-					<div class="col-md-auto">
-						<label for="exampleFormControlInput1" class="form-label">OrderStatus</label>
-						<input type="text" class="form-control" name="orderStatus" id="exampleFormControlInput1" placeholder="Enter Order Status" style="width: 300px;">
+					<div class="col-md-5">
+						<div class="form-group">
+							<label for="status">Status</label>
+							<select class="form-control" required name="orderStatus" id="status">
+								<option value="pending">Select Status</option>
+								<option value="pending">Pending</option>
+								<option value="completed">Completed</option>
+								<option value="inprogress">In Progress</option>
+							</select>
+						</div>
 					</div>
+
 				</div>
 					<button type="submit" class="btn btn-primary my-3">Add Order</button>
 				</form>

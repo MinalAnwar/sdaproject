@@ -33,11 +33,7 @@
                 <div class="col-lg-12">
                     <form method="post" action="addTask">
                         <div class="row formtype">
-                            <div class="col-md-5">
-                                <div class="form-group">
-                                    <label>Task ID</label>
-                                    <input name = "id"  class="form-control" type="number"  value="" required> </div>
-                            </div>
+
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Task Name</label>
@@ -51,9 +47,16 @@
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label>Status</label>
-                                    <input name = "status"  class="form-control" type="text"  value="" required> </div>
+                                    <label for="status">Status</label>
+                                    <select class="form-control" required name="status" id="status">
+                                        <option value="pending">Select Status</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="completed">Completed</option>
+                                        <option value="inprogress">In Progress</option>
+                                    </select>
+                                </div>
                             </div>
+
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Deadline</label>

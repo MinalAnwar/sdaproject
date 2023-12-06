@@ -31,7 +31,7 @@
         <div class="container">
             <div class="loginbox">
                 <div class="login-left">
-                    <b><a style="color: white; font-size: x-large;">Enterprise Resourse Planner</a></b>
+                    <b><a style="color: white; font-size: x-large;">Enterprise Resource Planner</a></b>
                     <p style="color: white;">A place to manage your whole Enterprise</p>
                 </div>
                 <div class="login-right">
@@ -63,12 +63,12 @@
                             %>
 
                         </form>
-                        <div class="text-center forgotpass"><a href="forgot-password.html">Forgot Password?</a></div>
+<%--                        <div class="text-center forgotpass"><a href="profile.jsp">Forgot Password?</a></div>--%>
                         <div class="login-or"><span class="or-line"></span> <span class="span-or">or</span></div>
                         <div class="social-login"><span>Login with</span> <a href="#" class="facebook"><i
                                 class="fab fa-facebook-f"></i></a><a href="#" class="google"><i
                                 class="fab fa-google"></i></a></div>
-                        <div class="text-center dont-have">Have an no account? <a href="signup.html"
+                        <div class="text-center dont-have">Have an no account? <a href="signup.jsp"
                                                                                   style="color: red;">Register</a></div>
                     </div>
                 </div>

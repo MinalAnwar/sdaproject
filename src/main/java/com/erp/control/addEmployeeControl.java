@@ -19,7 +19,7 @@ public class addEmployeeControl extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
             Employee obj = new Employee(
                     request.getParameter("name"),
-                    Integer.parseInt(request.getParameter("id")),
+                    1,
                     request.getParameter("designation"),
                     request.getParameter("address"),
                     request.getParameter("email"),
@@ -33,14 +33,18 @@ public class addEmployeeControl extends HttpServlet {
             );
             final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
             final String cnicRegex = "^\\d{5}-\\d{7}-\\d{1}$";
+            final String phoneRegex = "^\\d{4}-\\d{7}$";
 
-            final Pattern pattern = Pattern.compile(EMAIL_REGEX);
-            Matcher matcher = pattern.matcher(request.getParameter("email"));
+            final Pattern phonePattern = Pattern.compile(phoneRegex);
+            Matcher phoneMatcher = phonePattern.matcher(request.getParameter("phoneNumber"));
 
-            final Pattern pattern1 = Pattern.compile(cnicRegex);
-            Matcher matcher1 = pattern.matcher(request.getParameter("cnic"));
-            String gender = request.getParameter("gender");
-            if(Integer.parseInt(request.getParameter("id"))<0||Integer.parseInt(request.getParameter("salary"))<0||Integer.parseInt(request.getParameter("age"))<0 ||!gender.equalsIgnoreCase("female")||!gender.equalsIgnoreCase("male") || !matcher.matches() || !matcher1.matches())
+        final Pattern emailPattern = Pattern.compile(EMAIL_REGEX);
+            Matcher emailMatcher = emailPattern.matcher(request.getParameter("email"));
+
+            final Pattern cnicPattern = Pattern.compile(cnicRegex);
+            Matcher cnicMatcher = cnicPattern.matcher(request.getParameter("cnic"));
+
+        if(Integer.parseInt(request.getParameter("salary"))<0||Integer.parseInt(request.getParameter("age"))<0 || !emailMatcher.matches() || !cnicMatcher.matches()|| !phoneMatcher.matches())
             {
                 request.setAttribute("valid", false);
                 RequestDispatcher view = request.getRequestDispatcher("/add-employee.jsp");

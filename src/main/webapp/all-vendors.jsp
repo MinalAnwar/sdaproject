@@ -127,13 +127,12 @@
 										<thead>
 											<tr>
 												<th  >ID</th>
-											<th  >Name</th>
-											<th  >Rating</th>
-											<th >Phone Number</th>
+												<th>Name</th>
+												<th>Rating</th>
+												<th>Phone Number</th>
 												<th >Email</th>
-											<th ></th>
 											</tr>
-											</thead>
+										</thead>
 											<tbody>
 											<%
 												Admin user = new Admin();

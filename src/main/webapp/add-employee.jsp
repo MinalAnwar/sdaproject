@@ -38,11 +38,6 @@
 						<div class="row formtype">
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>Employee ID</label>
-									<input name = "id"  class="form-control" type="number"  value="" required> </div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
 									<label>Name</label>
 									<input name = "name"  class="form-control" type="text"  value="" required> </div>
 							</div>
@@ -55,7 +50,7 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Phone Number</label>
-									<input type="text" name = "phoneNumber" class="form-control" required> </div>
+									<input type="text"  placeholder="0300-8888886" name = "phoneNumber" class="form-control" required> </div>
 							</div>
 
 							<div class="col-md-4">
@@ -66,7 +61,7 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Email</label>
-									<input type="text" name = "email" class="form-control" required> </div>
+									<input type="text" placeholder="minal@gmail.com" name = "email" class="form-control" required> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
@@ -76,14 +71,20 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>CNIC</label>
-									<input type="text" name="cnic" class="form-control" required> </div>
+									<input type="text" placeholder="35202-6456106-4" name="cnic" class="form-control" required> </div>
 							</div>
 
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>Gender</label>
-									<input type="text" name="gender" class="form-control" required> </div>
+									<label for="gender">Gender</label>
+									<select class="form-control" required name="gender" id="gender">
+										<option value="male">Male</option>
+										<option value="female">Female</option>
+										<option value="other">Other</option>
+									</select>
+								</div>
 							</div>
+
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Salary</label>

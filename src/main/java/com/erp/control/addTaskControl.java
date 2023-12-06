@@ -16,19 +16,12 @@ import java.io.IOException;
 public class addTaskControl extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Task obj = new Task(
-                Integer.parseInt(request.getParameter("id")),
+                1,
                 request.getParameter("name"),
                 request.getParameter("description"),
                 request.getParameter("status"),
                 request.getParameter("deadline")
         );
-        if(Integer.parseInt(request.getParameter("id"))<0)
-        {
-            request.setAttribute("valid", false);
-            RequestDispatcher view = request.getRequestDispatcher("/add-task.jsp");
-            view.forward(request, response);
-            return;
-        }
         //in controller, we get the data from fields and make obj then call this function of admin
         Admin user = new Admin();
         boolean insertionCheck = user.addTask(obj);

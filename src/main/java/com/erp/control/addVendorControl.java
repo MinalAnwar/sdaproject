@@ -18,17 +18,21 @@ import java.util.regex.Pattern;
 public class addVendorControl extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Vendor obj = new Vendor(
-                Integer.parseInt(request.getParameter("vendorId")),
+                1,
                 request.getParameter("name"),
                 Integer.parseInt(request.getParameter("rating")),
                 request.getParameter("phoneNumber"),
                 request.getParameter("email")
         );
         final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        final String phoneRegex = "^\\d{4}-\\d{7}$";
+
+        final Pattern phonePattern = Pattern.compile(phoneRegex);
+        Matcher phoneMatcher = phonePattern.matcher(request.getParameter("phoneNumber"));
 
         final Pattern pattern = Pattern.compile(EMAIL_REGEX);
         Matcher matcher = pattern.matcher(request.getParameter("email"));
-        if(Integer.parseInt(request.getParameter("vendorId"))<0||Integer.parseInt(request.getParameter("rating"))<0||Integer.parseInt(request.getParameter("rating"))>5 || !matcher.matches() )
+        if(Integer.parseInt(request.getParameter("rating"))<0||Integer.parseInt(request.getParameter("rating"))>5 || !matcher.matches() || !phoneMatcher.matches())
         {
             request.setAttribute("valid", false);
             RequestDispatcher view = request.getRequestDispatcher("/add-vendors.jsp");

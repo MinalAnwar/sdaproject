@@ -2,6 +2,7 @@ package com.erp.control;
 
 import com.erp.dao.SystemWorks;
 import com.erp.entity.Inventory;
+import com.erp.entity.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,11 +28,12 @@ public class LoginControl extends HttpServlet {
                 inventory = new Inventory();
                 session.setAttribute("inventory", inventory);
             }
-            
-            String designation =obj.getDesignation(request.getParameter("email"),request.getParameter("password"));
-            System.out.println(designation);;
-            session.setAttribute("designation",designation);
-            response.sendRedirect(request.getContextPath() + "/dashboard.jsp");
+
+            User user = null;
+            user =obj.getDesignation(request.getParameter("email"),request.getParameter("password"));
+            session.setAttribute("designation",user.getDesignation());
+            session.setAttribute("user",user);
+            response.sendRedirect(request.getContextPath() + "/dashboard");
         }
         else {
             request.setAttribute("valid", isValid);

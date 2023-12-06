@@ -35,25 +35,34 @@
 				<div class="col-lg-12">
 					<form method="post" action="material">
 						<div class="row formtype">
+
 							<div class="col-md-4">
 								<div class="form-group">
-									<label>Material Id</label>
-									<input type="text" class="form-control" required name="id"> </div>
+									<label for="material">Select Material</label>
+									<select class="form-control" required name="name" id="material">
+										<option value="leather">Select Material</option>
+										<option value="leather">Leather</option>
+										<option value="lining">Lining</option>
+										<option value="cotton_cloth">Cotton Cloth</option>
+										<option value="collar">Collar</option>
+										<option value="cuffs">Cuffs</option>
+										<option value="zips">Zips</option>
+										<option value="button">Button</option>
+										<option value="brand_tag">Brand Tag</option>
+										<option value="thread">Thread</option>
+									</select>
+								</div>
 							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label>Name</label>
-									<input type="text" class="form-control"  required name="name"> </div>
-							</div>
+
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Quantity</label>
-									<input type="text" class="form-control" required name="stock"> </div>
+									<input type="number" class="form-control" required name="stock"> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Price</label>
-									<input type="text" class="form-control" required name="price"> </div>
+									<input type="text" class="form-control" placeholder="Price Per Piece" required name="price"> </div>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary buttonedit1">ADD</button>

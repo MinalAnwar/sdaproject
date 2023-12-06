@@ -124,8 +124,8 @@
 											<tr>
 												<th >ID</th>
 												<th  >Name</th>
-												<th  >Stock</th>
-												<th >Price</th>
+												<th  >Price</th>
+												<th >Stock</th>
 												<th ></th>
 											</tr>
 											</thead>

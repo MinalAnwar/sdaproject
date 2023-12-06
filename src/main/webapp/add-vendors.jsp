@@ -37,12 +37,7 @@
                 <div class="col-lg-12">
                     <form method="post" action="addVendor">
                         <div class="row formtype">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Id</label>
-                                    <input class="form-control" type="text" name="vendorId" required>
-                                </div>
-                            </div>
+
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Name</label>
@@ -52,13 +47,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" class="form-control" name="email" required>
+                                    <input type="text" class="form-control" placeholder="minal@gmail.com" name="email" required>
 								</div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Phone Number</label>
-                                    <input type="number" class="form-control" name="phoneNumber">
+                                    <input type="text" placeholder="0300-8888886" class="form-control" name="phoneNumber">
 								</div>
                             </div>
                             <div class="col-md-4">

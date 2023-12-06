@@ -3,7 +3,6 @@ package com.erp.control;
 import com.erp.entity.Admin;
 import com.erp.entity.Inventory;
 import com.erp.entity.Product;
-import com.erp.entity.RawMaterial;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,13 +25,13 @@ public class addProductControl extends HttpServlet {
             session.setAttribute("inventory", inventory);
         }
         Product product = new Product(
-                Integer.parseInt(request.getParameter("id")),
+                1,
                 request.getParameter("name"),
                 Double.parseDouble(request.getParameter("price")),
                 Integer.parseInt(request.getParameter("stock"))
         );
         inventory.addProduct(product);
-        if(Integer.parseInt(request.getParameter("id"))<0||Integer.parseInt(request.getParameter("price"))<0||Integer.parseInt(request.getParameter("stock"))<0)
+        if(Integer.parseInt(request.getParameter("price"))<0||Integer.parseInt(request.getParameter("stock"))<0)
         {
             request.setAttribute("valid", false);
             RequestDispatcher view = request.getRequestDispatcher("/add-product.jsp");

@@ -14,7 +14,7 @@
             <li class="nav-item dropdown has-arrow">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"> <span class="user-img"><i class="fa-solid fa-bars"></i></span> </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="profile.html">My Profile</a><a class="dropdown-item" href="index.jsp">Logout</a></div>
+                    <a class="dropdown-item" href="profile.jsp">My Profile</a><a class="dropdown-item" href="index.jsp">Logout</a></div>
             </li>
         </ul>
 
@@ -26,8 +26,16 @@
                     <li class="active"> <a href="dashboard.jsp"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
                     <li class="list-divider"></li>
 
-
+                        <c:if test = "${desigantion==null}">
+                            <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span>Complete Profile</span> <span class="menu-arrow"></span></a>
+                                <ul class="submenu_class" style="display: none;">
+                                    <li><a href="profile.jsp"> Profile </a></li>
+                                </ul>
+                            </li>
+                        </c:if>
                         <c:choose>
+
+
                             <c:when test="${designation.equalsIgnoreCase('Admin')}">
                             <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span>Employee</span> <span class="menu-arrow"></span></a>
                         <ul class="submenu_class" style="display: none;">
@@ -73,6 +81,27 @@
                     </c:when>
                     </c:choose>
 
+                    <c:choose>
+                        <c:when test="${designation.equalsIgnoreCase('Admin')}">
+                            <li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Quotations</span> <span class="menu-arrow"></span></a>
+                                <ul class="submenu_class" style="display: none;">
+                                    <li><a href="add-quotation"> Add Quotations </a></li>
+                                    <li><a href="all-quotation.jsp"> All Quotations </a></li>
+
+                                </ul>
+                            </li>
+                        </c:when>
+                    </c:choose>
+
+                    <c:choose>
+                    <c:when test="${designation.equalsIgnoreCase('Manager')}">
+                        <li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Quotations</span> <span class="menu-arrow"></span></a>
+                            <ul class="submenu_class" style="display: none;">
+                                <li><a href="add-quotation.html"> Add Quotations </a></li>
+                            </ul>
+                        </li>
+                    </c:when>
+                    </c:choose>
 
                     <c:choose>
                         <c:when test="${designation.equalsIgnoreCase('Admin')||designation.equalsIgnoreCase('Manager')}">

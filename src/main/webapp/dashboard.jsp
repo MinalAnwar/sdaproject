@@ -31,7 +31,7 @@
 				<div class="page-header">
 					<div class="row">
 						<div class="col-sm-12 mt-5">
-							<h3 class="page-title mt-3">Good Morning User!</h3>
+							<h3 class="page-title mt-3">Good Morning ${user.getName()}!</h3>
 							<ul class="breadcrumb">
 								<li class="breadcrumb-item active">Dashboard</li>
 							</ul>
@@ -44,7 +44,7 @@
 							<div class="card-body">
 								<div class="dash-widget-header">
 									<div>
-										<h3 class="card_widget_header">5</h3>
+										<h3 class="card_widget_header">${dashboardInfo.get("totalProducts")}</h3>
 										<h6 class="text-muted">Total Products</h6> </div>
 									<div class="ml-auto mt-md-3 mt-lg-0"> <span class="opacity-7 text-muted"><i class="fa-solid fa-book fa-2x"></i></span> </div>
 								</div>
@@ -56,7 +56,7 @@
 							<div class="card-body">
 								<div class="dash-widget-header">
 									<div>
-										<h3 class="card_widget_header">200</h3>
+										<h3 class="card_widget_header">${dashboardInfo.get("Revenue")}</h3>
 										<h6 class="text-muted">Revenue</h6> </div>
 									<div class="ml-auto mt-md-3 mt-lg-0"> <span class="opacity-7 text-muted"><i class="fa-solid fa-dollar-sign fa-2x"></i></span> </div>
 								</div>
@@ -68,8 +68,8 @@
 							<div class="card-body">
 								<div class="dash-widget-header">
 									<div>
-										<h3 class="card_widget_header">2</h3>
-										<h6 class="text-muted">Products Completed</h6> </div>
+										<h3 class="card_widget_header">${dashboardInfo.get("completedOrders")}</h3>
+										<h6 class="text-muted">Orders Completed</h6> </div>
 									<div class="ml-auto mt-md-3 mt-lg-0"> <i class="fa-solid fa-check fa-2x"></i><span class="opacity-7 text-muted"></span> </div>
 								</div>
 							</div>
@@ -80,8 +80,8 @@
 							<div class="card-body">
 								<div class="dash-widget-header">
 									<div>
-										<h3 class="card_widget_header">3</h3>
-										<h6 class="text-muted">Pending Products</h6> </div>
+										<h3 class="card_widget_header">${dashboardInfo.get("pendingOrders")}</h3>
+										<h6 class="text-muted">Pending Orders</h6> </div>
 									<div class="ml-auto mt-md-3 mt-lg-0"> <span class="opacity-7 text-muted"><i class="fa-regular fa-clock fa-2x"></i></span> </div>
 								</div>
 							</div>
@@ -160,6 +160,18 @@
 			</div>
 		</div>
 	</div>
+	<input type="hidden" value="${dashboardInfo.get("pendingOrders")}" id="pendingOrders">
+	<input type="hidden" value="${dashboardInfo.get("completedOrders")}" id="completedOrders">
+
+	<input type="hidden" value="${estimatedOrder}" id="estimatedOrder">
+	<input type="hidden" value="${estimatedProfit}" id="estimatedProfit">
+
+	<c:forEach items="${graphStats.get('Orders')}"  var="o">
+		<input type="hidden" value="${o}" class="orders">
+	</c:forEach>
+	<c:forEach items="${graphStats.get('Profit')}"  var="p">
+		<input type="hidden" value="${p}" class="profits">
+	</c:forEach>
 	<script src="disable.js"></script>
 	<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 	<script src="assets/js/jquery-3.5.1.min.js"></script>

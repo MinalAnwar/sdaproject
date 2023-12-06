@@ -65,14 +65,13 @@ public class TaskDao {
     public boolean addTask(Task obj) {
         Database dataAccess = new Database();
         try (Connection connection = dataAccess.getConnection()) {
-            String storedProcedureCall = "CALL InsertTask(?, ?, ?, ?, ?)";
+            String storedProcedureCall = "CALL InsertTask(?, ?, ?, ?)";
             try (CallableStatement callableStatement = connection.prepareCall(storedProcedureCall)) {
                 // Set the parameters for the stored procedure
-                callableStatement.setInt(1,obj.getTaskId());
-                callableStatement.setString(2, obj.getName());
-                callableStatement.setString(3, obj.getDescription());
-                callableStatement.setString(4, obj.getStatus());
-                callableStatement.setString(5, obj.getDeadline());
+                callableStatement.setString(1, obj.getName());
+                callableStatement.setString(2, obj.getDescription());
+                callableStatement.setString(3, obj.getStatus());
+                callableStatement.setString(4, obj.getDeadline());
                 callableStatement.execute();
                 return true;
             } catch (SQLException e) {

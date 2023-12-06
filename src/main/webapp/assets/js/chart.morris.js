@@ -9,20 +9,29 @@ $(document).ready(function () {
   });
 });
 function lineChart() {
+
+  var orders = document.getElementsByClassName("orders");
+  var profits = document.getElementsByClassName("profits");
+
+  var estimatedOrder = document.getElementById('estimatedOrder');
+  var estimatedProft = document.getElementById('estimatedProfit');
+
+  console.log(orders);
   window.lineChart = Morris.Line({
     element: "line-chart",
-    data: [
-      { y: "2017", a: 50, b: 50 },
-      { y: "2018", a: 55, b: 60 },
-      { y: "2019", a: 50, b: 65 },
-      { y: "2020", a: 60, b: 55 },
-      { y: "2021", a: 65, b: 70 },
-      { y: "2022", a: 70, b: 75 },
-      { y: "2023", a: 80, b: 75 },
+    data: [ // Years, Profit, Orders
+      { y: "2017", a: parseInt(profits[0].value), b: parseInt(orders[0].value) },
+      { y: "2018", a: parseInt(profits[1].value), b: parseInt(orders[1].value) },
+      { y: "2019", a: parseInt(profits[2].value), b: parseInt(orders[2].value) },
+      { y: "2020", a: parseInt(profits[3].value), b: parseInt(orders[3].value) },
+      { y: "2021", a: parseInt(profits[4].value), b: parseInt(orders[4].value) },
+      { y: "2022", a: parseInt(profits[5].value), b: parseInt(orders[5].value) },
+      { y: "2023", a: parseInt(profits[6].value), b: parseInt(orders[6].value) },
+      { y: "2024", a: parseInt(estimatedProft.value), b: parseInt(estimatedOrder.value) },
     ],
     xkey: "y",
     ykeys: ["a", "b"],
-    labels: ["Profit", "Expected Profit"],
+    labels: ["Profit", "Orders"],
     lineColors: ["#009688", "#cdc6c6"],
     lineWidth: "3px",
     resize: true,
@@ -30,12 +39,16 @@ function lineChart() {
   });
 }
 function donutChart() {
+
+  // get the values from here
+  var pendingOrders = document.getElementById("pendingOrders").value;
+  var completedOrders = document.getElementById("completedOrders").value;
   window.donutChart = Morris.Donut({
     element: "donut-chart",
     data: [
-      { label: "Completed Products", value: 2 },
-      { label: "Pending Products", value: 3 },
-   
+      { label: "Orders Completed", value: completedOrders },
+      { label: "Pending Orders", value: pendingOrders },
+
     ],
     backgroundColor: "#f2f5fa",
     labelColor: "#009688",

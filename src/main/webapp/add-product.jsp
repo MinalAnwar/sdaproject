@@ -37,23 +37,25 @@
 							<div class="row formtype">
 								<div class="col-md-4">
 									<div class="form-group">
-										<label>Product Id</label>
-										<input type="text" class="form-control" required name="id"> </div>
+										<label for="productType">Product Type</label>
+										<select class="form-control" required name="name" id="productType">
+											<option value="leather_jacket">Leather Jacket</option>
+											<option value="shirt">Polo Shirt</option>
+											<option value="trouser">Trouser</option>
+											<option value="suiting_accessory">Dress Shirt</option>
+										</select>
+									</div>
 								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-										<label>Name</label>
-										<input type="text" class="form-control" required name="name"> </div>
-								</div>
+
 								<div class="col-md-4">
 									<div class="form-group">
 										<label>Quantity</label>
-										<input type="text" class="form-control" required name="stock"> </div>
+										<input type="number" class="form-control" required name="stock"> </div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label>Price</label>
-										<input type="text" class="form-control" required name="price"> </div>
+										<input type="text" class="form-control" placeholder="Price Per Piece" required name="price"> </div>
 								</div>
 							</div>
 							<button type="submit" class="btn btn-primary buttonedit1">ADD</button>

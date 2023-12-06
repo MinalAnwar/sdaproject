@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "addOrderControl", value = "/addOrder")
 public class addOrderControl extends HttpServlet {
@@ -23,8 +25,10 @@ public class addOrderControl extends HttpServlet {
                 Integer.parseInt(request.getParameter("totalItems")),
                 request.getParameter("orderStatus")
         );
-
-        if(Integer.parseInt(request.getParameter("totalAmount"))<0||Integer.parseInt(request.getParameter("totalItems"))<0)
+        final String orderIdRegx = "^\\d{3}-\\d{5}-\\d{1}$";
+        final Pattern orderPattern = Pattern.compile(orderIdRegx);
+        Matcher orderMatcher = orderPattern.matcher(request.getParameter("orderNumber"));
+        if(Integer.parseInt(request.getParameter("totalAmount"))<0||Integer.parseInt(request.getParameter("totalItems"))<0||!orderMatcher.matches())
         {
             request.setAttribute("valid", false);
             RequestDispatcher view = request.getRequestDispatcher("/add-order.jsp");

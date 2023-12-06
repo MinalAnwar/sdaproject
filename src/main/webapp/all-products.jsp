@@ -133,8 +133,8 @@
 										<tr>
 											<th >ID</th>
 											<th>Name</th>
+											<th>price</th>
 											<th>Stock</th>
-											<th>Price</th>
 										</tr>
 										</thead>
 										<tbody>
