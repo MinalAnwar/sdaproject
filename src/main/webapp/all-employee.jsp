@@ -118,7 +118,7 @@
 											<td><%= result.getString("phoneNumber") %></td>
 											<td>
 												<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
-												<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
+												<a href="update_employee.jsp?id=<%=result.getString("employeeId")%>" class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
 												<a class="delete" title="Delete" data-target="#delete_asset" onclick="sendRequestWithId(this)" data-employee-id="<%= result.getInt("employeeId")%>"><i class="material-icons">&#xE872;</i></a>
 
 												<%
