@@ -73,4 +73,18 @@ public class ManagerDao {
         }
 
     }
+
+    public ResultSet viewQuotation() throws SQLException {
+        Database dataAccess = new Database();
+        Connection connection = dataAccess.getConnection();
+        Statement statement = connection.createStatement();
+        return statement.executeQuery("SELECT quotationIsd, orderDate, vendor.name,\n" +
+                " (select name from rawmaterial where RawMaterialid = pOne) as `oneName`,\n" +
+                " pOneQuantity, pOnePrice,\n" +
+                " (select name from rawmaterial where RawMaterialid = pTwo) as `twoName`,\n" +
+                " pTwoQuantity, pTwoPrice,\n" +
+                " (select name from rawmaterial where RawMaterialid = pThree) as `threeName`,\n" +
+                " pThreeQuantity, pThreePrice, (pOnePrice*pOneQuantity + pTwoPrice*pTwoQuantity + pThreeQuantity*pThreePrice) as `Total`\n" +
+                "FROM sdapro.quotation inner join vendor ON quotation.vendorId = email;\n");
+    }
 }

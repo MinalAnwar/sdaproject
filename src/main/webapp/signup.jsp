@@ -48,6 +48,9 @@
 							</form>
 							<div class="login-or"> <span class="or-line"></span> <span class="span-or">or</span> </div>
 							<div class="social-login"> <span>Signup with</span> <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="google"><i class="fab fa-google"></i></a> </div>
+
+						<div class="text-center dont-have">Have an account? <a href="index.jsp"
+																				  style="color: red;">Login</a></div>
 						</div>
 					</div>
 				</div>

@@ -2,7 +2,7 @@ package com.erp.entity;
 
 public class Quotations {
     int id;
-    int material1;
+    int material1; // material id
     int quantity1;
     int price1;
     int material2;
@@ -11,6 +11,7 @@ public class Quotations {
     int material3;
     int quantity3;
     int price3;
+    boolean isApproved;
 
     public Quotations(){}
 
@@ -67,6 +68,11 @@ public class Quotations {
         this.price3 = price3;
     }
 
+
+    public void setApproved(boolean approved) {
+        isApproved = approved;
+    }
+
     public int getId() {
         return id;
     }
@@ -106,4 +112,9 @@ public class Quotations {
     public int getPrice3() {
         return price3;
     }
+
+    public boolean isApproved() {
+        return isApproved;
+    }
 }
+

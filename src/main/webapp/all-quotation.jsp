@@ -1,5 +1,6 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="com.erp.entity.Admin" %>
+<%@ page import="com.erp.entity.Manager" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,59 +96,75 @@
 							<div class="card-body booking_card">
 								
 								<div class="table-responsive">
+
 									<table class="datatable table table-stripped table table-hover table-center mb-0">
-										<thead>
+										<thead id="results">
 										<tr>
-										<th  >Vendor Name</th>
-										<th ></th>
-										<th ></th>
-										<th ></th>
-										<th >Price</th>
+											<th>Vendor Name</th>
+											<th >Quotation Date</th>
+											<th >Material 1</th>
+											<th >Quantity 1</th>
+											<th >Price 1</th>
+											<th >Material 2</th>
+											<th >Quantity 2</th>
+											<th >Price 2</th>
+											<th >Material 3</th>
+											<th >Quantity 3</th>
+											<th >Price 3</th>
+											<th>Total $</th>
 										</tr>
 										</thead>
-										<tbody style="cursor: pointer;">
-											
+										<tbody>
+										<%
+											Manager user = new Manager();
+											ResultSet result = user.viewQuotation();
+											try {
+												while (result.next()) {
+										%>
+										<tr>
+											<td><%= result.getString("name") %></td>
+											<td><%= result.getString("orderDate") %></td>
+											<td><%= result.getString("oneName") %></td>
+											<td><%= result.getInt("pOneQuantity") %></td>
+											<td><%= result.getInt("pOnePrice") %></td>
+											<td><%= result.getString("twoName") %></td>
+											<td><%= result.getInt("pTwoQuantity") %></td>
+											<td><%= result.getInt("pTwoPrice") %></td>
+											<td><%= result.getString("threeName") %></td>
+											<td><%= result.getInt("pThreeQuantity") %></td>
+											<td><%= result.getInt("pThreePrice") %></td>
+											<td><%= result.getInt("Total") %></td>
+											<td>
+												<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
+												<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
+												<a class="delete" title="Delete" data-target="#delete_asset" ><i class="material-icons">&#xE872;</i></a>
+												<a class="check" title="Check"  data-target="#check_asset" data-p1-name="<%= result.getString("oneName") %>" data-toggle="modal"><i class="fa-solid fa-check"></i></a>
+												<%
 
-                                            <tr>
-                                                <td data-target="#ShowCompleteQuoteInfo" data-toggle="modal">Ahmed</td>
-                                                <th data-target="#ShowCompleteQuoteInfo" data-toggle="modal" ></th>
-                                                <th data-target="#ShowCompleteQuoteInfo" data-toggle="modal" ></th>
-                                                <td data-target="#ShowCompleteQuoteInfo" data-toggle="modal" ></td>
-                                                <td data-target="#ShowCompleteQuoteInfo" data-toggle="modal">5000</td>
-                                                <td>
-                                                    <a class="delete" title="Delete"  data-target="#delete_asset" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
-													<a class="check" title="Check"  data-target="#check_asset" href="#" data-toggle="modal"><i class="fa-solid fa-check"></i></a>
-												</td>
-                                                </tr>
+													Boolean isValid = (Boolean) request.getAttribute("valid");
+													if (isValid != null && !isValid) {
+												%>
+												<div style="color: red;">Cannot delete Product</div>
+												<%
+													}
+												%>
+											</td>
+										</tr>
+										<%
+												}
+											} catch (Exception e) {
+												throw new RuntimeException(e);
+											}
+										%>
 
-                                                    
-
-                                                <td data-target="#ShowCompleteQuoteInfo" data-toggle="modal">Ahmed</td>
-                                                <th data-target="#ShowCompleteQuoteInfo" data-toggle="modal" ></th>
-                                                <th data-target="#ShowCompleteQuoteInfo" data-toggle="modal" ></th>
-                                                <td data-target="#ShowCompleteQuoteInfo" data-toggle="modal" ></td>
-                                                <td data-target="#ShowCompleteQuoteInfo" data-toggle="modal">5000</td>
-                                                <td>
-                                                <a class="delete" title="Delete"  data-target="#delete_asset" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
-                                                <a class="check" title="Check"  data-target="#check_asset" href="#" data-toggle="modal"><i class="fa-solid fa-check"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <td data-target="#ShowCompleteQuoteInfo" data-toggle="modal">Ahmed</td>
-                                                <th data-target="#ShowCompleteQuoteInfo" data-toggle="modal" ></th>
-                                                <th data-target="#ShowCompleteQuoteInfo" data-toggle="modal" ></th>
-                                                <td data-target="#ShowCompleteQuoteInfo" data-toggle="modal" ></td>
-                                                <td data-target="#ShowCompleteQuoteInfo" data-toggle="modal">5000</td>
-                                                <td>
-                                                    <a class="delete" title="Delete"  data-target="#delete_asset" href="#" data-toggle="modal"><i class="material-icons">&#xE872;</i></a>
-													<a class="check" title="Check"  data-target="#check_asset" href="#" data-toggle="modal"><i class="fa-solid fa-check"></i></a>
-												</td>
-                                                        </tr>
-                                                
-											
-											
-											</tbody>
 										</tbody>
 									</table>
+									<style>
+										#results th{
+											width: 37mm;
+										}
+									</style>
+
 								</div>
 							</div>
 						</div>
@@ -172,8 +189,8 @@
 					<div class="modal-content">
 						<div class="modal-body text-center"> 
 							<h3 class="delete_class">Are you sure that you want to approve this quotation?</h3>
-							<div class="m-t-20"> <a href="#" class="btn btn-success" data-dismiss="modal">Yes</a>
-								<button type="submit" class="btn btn-danger ">No</button>
+							<div class="m-t-20"> <a href="#" class="btn btn-success" >Yes</a>
+								<button type="submit" class="btn btn-danger " data-dismiss="modal">No</button>
 							
 							</div>
 						</div>

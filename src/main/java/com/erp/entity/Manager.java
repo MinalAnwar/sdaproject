@@ -82,4 +82,9 @@ public class Manager extends User {
         ManagerDao deleteData= new ManagerDao();
         return deleteData.deleteRating(empid,managerId);
     }
+
+    public ResultSet viewQuotation() throws SQLException {
+        ManagerDao viewData =  new ManagerDao();
+        return viewData.viewQuotation();
+    }
 }
