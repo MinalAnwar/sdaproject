@@ -37,12 +37,11 @@
 							<div class="row formtype">
 								<div class="col-md-4">
 									<div class="form-group">
-										<label for="productType">Product Type</label>
-										<select class="form-control" required name="name" id="productType">
-											<option value="leather_jacket">Leather Jacket</option>
-											<option value="shirt">Polo Shirt</option>
-											<option value="trouser">Trouser</option>
-											<option value="suiting_accessory">Dress Shirt</option>
+										<label >Product Type</label>
+										<select class="form-control" required name="product"  id="m1">
+											<c:forEach items="${product}" var="v">
+												<option value="${v.getName()}">${v.getName()}</option>
+											</c:forEach>
 										</select>
 									</div>
 								</div>
@@ -50,12 +49,12 @@
 								<div class="col-md-4">
 									<div class="form-group">
 										<label>Quantity</label>
-										<input type="number" class="form-control" required name="stock"> </div>
+										<input type="number" min="10" max="10000"  class="form-control" required name="stock"> </div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 										<label>Price</label>
-										<input type="text" class="form-control" placeholder="Price Per Piece" required name="price"> </div>
+										<input type="number" min="50" max="10000" aria-placeholder="pice per piece" class="form-control" placeholder="Price Per Piece" required name="price"> </div>
 								</div>
 							</div>
 							<button type="submit" class="btn btn-primary buttonedit1">ADD</button>

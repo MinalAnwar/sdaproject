@@ -42,15 +42,14 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
-						<form>
+						<form method="post" action="addQuotation" >
 
 							<div class="row formtype">
 								<div class="col-md-5">
 									<div class="form-group">
 										<h4>Vendor Name</h4>
 
-										<select class="form-control" required name="vendor"  id="vendor">
-											<option value="." disabled>Select Material</option>
+										<select class="form-control" required name="vendor" id="vendor">
 											<c:forEach items="${vendors}" var="v">
 												<option value="${v.getEmail()}">${v.getName()}</option>
 											</c:forEach>
@@ -64,18 +63,12 @@
 							<div class="row formtype">
 								<div class="col-md-3">
 									<div class="form-group">
-										<label for="material">Name</label>
-										<select class="form-control" required name="name"  id="material">
-											<option disabled value=".">Select Material</option>
-											<option value="leather">Leather</option>
-											<option value="lining">Lining</option>
-											<option value="cotton_cloth">Cotton Cloth</option>
-											<option value="collar">Collar</option>
-											<option value="cuffs">Cuffs</option>
-											<option value="zips">Zips</option>
-											<option value="button">Button</option>
-											<option value="brand_tag">Brand Tag</option>
-											<option value="thread">Thread</option>
+										<label >Select Material</label>
+										<select class="form-control" required name="material1"  id="m1">
+
+											<c:forEach items="${material}" var="v">
+												<option value="${v.getProductId()}">${v.getName()}</option>
+											</c:forEach>
 										</select>
 									</div>
 								</div>
@@ -84,12 +77,12 @@
 									<div class="col-md-3">
 										<div class="form-group">
 											<label>Quantity</label>
-											<input type="number" min="15" max="10000" class="form-control" id="usr1"> </div>
+											<input type="number" value="15" required min="15" max="10000" class="form-control" name="quantity1"> </div>
 									</div>
 									<div class="col-md-3">
 										<div class="form-group">
 											<label>Price</label>
-											<input type="number" min="15" max="1000000" class="form-control" id="usr1"> </div>
+											<input type="number" value="10" required min="10" max="1000000" class="form-control" name="price1"> </div>
 									</div>
 									</div>
 									<h5>Material 2</h5>
@@ -97,18 +90,12 @@
 							<div class="row formtype">
 								<div class="col-md-3">
 									<div class="form-group">
-										<label for="material">Select Material</label>
-										<select class="form-control" required name="name" id="material">
-											<option value="." disabled >Select Material</option>
-											<option value="leather">Leather</option>
-											<option value="lining">Lining</option>
-											<option value="cotton_cloth">Cotton Cloth</option>
-											<option value="collar">Collar</option>
-											<option value="cuffs">Cuffs</option>
-											<option value="zips">Zips</option>
-											<option value="button">Button</option>
-											<option value="brand_tag">Brand Tag</option>
-											<option value="thread">Thread</option>
+										<label >Select Material</label>
+										<select class="form-control" name="material2"  >
+											<option value="-1"></option>
+											<c:forEach items="${material}" var="v">
+												<option value="${v.getProductId()}">${v.getName()}</option>
+											</c:forEach>
 										</select>
 									</div>
 								</div><div class="col-md-3">
@@ -116,31 +103,25 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Quantity</label>
-                                        <input type="number" min="15" max="10000" class="form-control" id="usr1"> </div>
+                                        <input type="number" value="15" min="15" max="10000" class="form-control" name="quantity2"> </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Price</label>
-										<input type="number" min="1" max="1000000" class="form-control" id="usr1"> </div>
+										<input type="number" value="10" min="10" max="1000000" class="form-control" name="price2"> </div>
                                 </div>
                                 </div>
-											<h5>Product 3</h5>
+											<h5>Material 3</h5>
 
 							<div class="row formtype">
 								<div class="col-md-3">
 									<div class="form-group">
-										<label for="material">Select Material</label>
-										<select class="form-control" required name="name" id="material">
-											<option  value="." disabled>Select Material</option>
-											<option value="leather">Leather</option>
-											<option value="lining">Lining</option>
-											<option value="cotton_cloth">Cotton Cloth</option>
-											<option value="collar">Collar</option>
-											<option value="cuffs">Cuffs</option>
-											<option value="zips">Zips</option>
-											<option value="button">Button</option>
-											<option value="brand_tag">Brand Tag</option>
-											<option value="thread">Thread</option>
+										<label for=>Select Material</label>
+										<select class="form-control" value="-1" name="material3"  >
+											<option value="-1"></option>
+											<c:forEach items="${material}" var="v">
+												<option value="${v.getProductId()}">${v.getName()}</option>
+											</c:forEach>
 										</select>
 									</div>
 								</div>
@@ -149,19 +130,20 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Quantity</label>
-                                        <input type="number" min="1" max="10000" class="form-control" id="usr1"> </div>
+                                        <input type="number" value="15" min="15" max="10000" class="form-control" name="quantity3"> </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Price</label>
-                                        <input type="number" min="1" max="100000" class="form-control" id="usr1"> </div>
+                                        <input type="number" value="10" min="10" max="100000" class="form-control" name="price3"> </div>
                                 </div>
-                                </div>		</div>
-								</form>
+                                </div>
+							<button type="submit" class="btn btn-primary buttonedit1 mb-3" >Add Quotation</button>
+
+						</form>
 						</div>
 					</div>
-					<button type="button" class="btn btn-primary buttonedit1" onclick>Add Quotation</button>
-				</div>
+			</div>
 			</div>
 		</div>
 		<script src="assets/js/jquery-3.5.1.min.js"></script>

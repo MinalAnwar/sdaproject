@@ -1,7 +1,5 @@
 package com.erp.entity;
 
-import java.sql.ResultSet;
-
 public class RawMaterial {
     private int productId;
     private String name;
@@ -47,11 +45,7 @@ public class RawMaterial {
     public int getTotalQuantity() {
         return totalQuantity;
     }
-    public void updateMaterial(int productId,int quantity,int price,String name,int newId)
-    {
-        // get the data from servlet and send this all to dao for database operation
 
-    }
     public void calculateTotalValue()
     {
         //call dao function take all product with price from database

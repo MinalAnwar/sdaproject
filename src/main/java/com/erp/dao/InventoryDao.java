@@ -5,8 +5,14 @@ import com.erp.entity.Product;
 import com.erp.entity.RawMaterial;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InventoryDao {
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
+
     public boolean addRawMaterialDAO(RawMaterial obj) {
         Database dataAccess = new Database();
         try (Connection connection = dataAccess.getConnection()) {
@@ -160,4 +166,46 @@ public class InventoryDao {
 
     }
 
+    public List<RawMaterial> getAllRawMaterial() {
+        List<RawMaterial> materials = new ArrayList<>();
+        String query = "select * from rawmaterial";
+        try {
+            Connection connection = new Database().getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                materials.add(new RawMaterial(resultSet.getInt("RawMaterialid"),
+                        resultSet.getString("name"),
+                        resultSet.getDouble("price"),
+                        resultSet.getInt("totalQuantity"))
+                );
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return materials;
+    }
+
+    public List<Product> getAllProduct() {
+        List<Product> products = new ArrayList<>();
+        String query = "select * from product";
+        try {
+            Connection connection = new Database().getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                products.add(new Product(resultSet.getInt("productId"),
+                        resultSet.getString("name"),
+                        resultSet.getDouble("price"),
+                        resultSet.getInt("totalQuantity"))
+                );
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return products;
+
+    }
 }

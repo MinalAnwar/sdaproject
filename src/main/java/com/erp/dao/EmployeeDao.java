@@ -7,6 +7,9 @@ import java.sql.*;
 
 
 public class EmployeeDao {
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
         public boolean addEmployeeDAO(Employee obj)
         {
             Database dataAccess = new Database();
@@ -67,4 +70,24 @@ public class EmployeeDao {
             Statement statement = connection.createStatement();
             return statement.executeQuery("SELECT * FROM employee");
         }
+
+    public void addRating(int managerID, int empID, int rating){
+
+        String query = "insert into ratings (managerID, empID, ratingDate, rating)\n" +
+                "values\n" +
+                "(?,?,?,?);";
+        try {
+            Connection connection = new Database().getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, managerID);
+            preparedStatement.setInt(2, empID);
+            preparedStatement.setDate(3, java.sql.Date.valueOf(java.time.LocalDate.now()));
+            preparedStatement.setInt(4, rating);
+            preparedStatement.executeUpdate();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
 }

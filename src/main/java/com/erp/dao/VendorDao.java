@@ -90,4 +90,24 @@ public class VendorDao {
         Statement statement = connection.createStatement();
         return statement.executeQuery("SELECT * FROM `vendor`");
     }
+
+    public boolean deleteVendor(int vendorId) {
+        Database dataAccess = new Database();
+        try (Connection connection = dataAccess.getConnection()) {
+            String storedProcedureCall = "{CALL DeleteVendor(?)}";
+            try (CallableStatement callableStatement = connection.prepareCall(storedProcedureCall)) {
+                // Set the parameters for the stored procedure
+                callableStatement.setInt(1, vendorId);
+                callableStatement.execute();
+                return true;
+            } catch (SQLException e) {
+                // Handle SQLException and show an error message
+                e.printStackTrace();
+                return false;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

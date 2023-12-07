@@ -34,7 +34,7 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-12">
-					<form method="post" action="addEmployee">
+					<form method="get" action="addEmployee">
 						<div class="row formtype">
 							<div class="col-md-4">
 								<div class="form-group">
@@ -44,7 +44,7 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Age</label>
-									<input type="number" name = "age" class="form-control" required> </div>
+									<input type="number" min="18" max="80" name = "age" class="form-control" required> </div>
 							</div>
 
 							<div class="col-md-4">
@@ -78,6 +78,7 @@
 								<div class="form-group">
 									<label for="gender">Gender</label>
 									<select class="form-control" required name="gender" id="gender">
+										<option value="." disabled>Select Option</option>
 										<option value="male">Male</option>
 										<option value="female">Female</option>
 										<option value="other">Other</option>
@@ -88,7 +89,7 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Salary</label>
-									<input type="number" name = "salary" class="form-control"  required> </div>
+									<input type="number" min="10000" max="1000000" name = "salary" class="form-control"  required> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">

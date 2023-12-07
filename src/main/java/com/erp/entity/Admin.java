@@ -187,4 +187,14 @@ public class Admin extends User {
         TaskDao updateData = new TaskDao();
         return updateData.updateAssignTask(date,orderid,employeeid,oldOrderid,oldEmployeeid);
     }
+
+    public boolean deleteVendor(int vendorId) {
+        VendorDao deleteData=new VendorDao();
+        return deleteData.deleteVendor(vendorId);
+    }
+
+    public ResultSet viewRatings() throws SQLException {
+        ManagerDao obj = new ManagerDao();
+        return obj.viewRatigns();
+    }
 }

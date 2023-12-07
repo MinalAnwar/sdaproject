@@ -142,7 +142,7 @@
 																<div class="col-12 col-sm-6">
 																	<div class="form-group">
 																		<label>Age</label>
-																		<input type="text" name="age" value="${user.getAge()}" class="form-control"> </div>
+																		<input type="number" min="18" max="80" name="age" value="${user.getAge()}" class="form-control"> </div>
 																</div>
 																<div class="col-12">
 																	<h5 class="form-title"><span>Address</span></h5> </div>
@@ -153,6 +153,15 @@
 																</div>
 															</div>
 															<button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+																<%
+																	Boolean isValid = (Boolean) request.getAttribute("valid");
+																	if (isValid != null && !isValid) {
+																%>
+													</div>
+													<div style="color: red;">Cnic or Phone Number not in Correct format</div>
+													<%
+														}
+													%>
 														</form>
 													</div>
 												</div>

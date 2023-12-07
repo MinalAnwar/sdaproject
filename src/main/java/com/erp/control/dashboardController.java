@@ -1,6 +1,10 @@
 package com.erp.control;
 
+import com.erp.dao.InventoryDao;
 import com.erp.dao.SystemWorks;
+import com.erp.dao.VendorDao;
+import com.erp.entity.RawMaterial;
+import com.erp.entity.Vendor;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,5 +37,14 @@ public class dashboardController extends HttpServlet {
         session.setAttribute("graphStats", graphStats);
         System.out.println(graphStats.get("Orders"));
         resp.sendRedirect("dashboard.jsp");
+
+        // Get a List of vendor from DB to load all material in session in first page
+            InventoryDao getRawMaterial = new InventoryDao();
+            List<RawMaterial> materials =getRawMaterial.getAllRawMaterial();
+            session.setAttribute("material", materials);
+
+            VendorDao vendorDao = new VendorDao();
+            List<Vendor> vendors = vendorDao.getAllVendors();
+            session.setAttribute("vendors", vendors);
     }
 }

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "updateProfileControl", value = "/updateProfile")
 public class updateProfileControl extends HttpServlet {
@@ -32,19 +34,26 @@ public class updateProfileControl extends HttpServlet {
         String address = request.getParameter("address");
         String cnic = request.getParameter("cnic");
         int age = Integer.parseInt(request.getParameter("age"));
-//        final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-//        final String cnicRegex = "^\\d{5}-\\d{7}-\\d{1}$";
-//
-//        final Pattern pattern = Pattern.compile(EMAIL_REGEX);
-//        Matcher matcher = pattern.matcher(request.getParameter("email"));
-//
-//        final Pattern pattern1 = Pattern.compile(cnicRegex);
-//        Matcher matcher1 = pattern.matcher(request.getParameter("cnic"));
-//
-//        if(age<0||!matcher.matches() || !matcher1.matches())
-//        {
-//            return;
-//        }
+        final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        final String cnicRegex = "^\\d{5}-\\d{7}-\\d{1}$";
+        final String phoneRegex = "^\\d{4}-\\d{7}$";
+
+        final Pattern phonePattern = Pattern.compile(phoneRegex);
+        Matcher phoneMatcher = phonePattern.matcher(request.getParameter("phoneNumber"));
+
+        final Pattern emailPattern = Pattern.compile(EMAIL_REGEX);
+        Matcher emailMatcher = emailPattern.matcher(request.getParameter("email"));
+
+        final Pattern cnicPattern = Pattern.compile(cnicRegex);
+        Matcher cnicMatcher = cnicPattern.matcher(request.getParameter("cnic"));
+
+        if(!emailMatcher.matches() || !cnicMatcher.matches()|| !phoneMatcher.matches())
+        {
+            request.setAttribute("valid", false);
+            RequestDispatcher view = request.getRequestDispatcher("/profile.jsp");
+            view.forward(request, response);
+            return;
+        }
         User obj = new User();
         boolean insertionCheck = obj.updateProfile(id,name,designation,dateOfBirth,email,phoneNumber,address,cnic,age);
         if (insertionCheck) {

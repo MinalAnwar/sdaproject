@@ -38,18 +38,12 @@
 
 							<div class="col-md-4">
 								<div class="form-group">
-									<label for="material">Select Material</label>
-									<select class="form-control" required name="name" id="material">
-										<option value="leather">Select Material</option>
-										<option value="leather">Leather</option>
-										<option value="lining">Lining</option>
-										<option value="cotton_cloth">Cotton Cloth</option>
-										<option value="collar">Collar</option>
-										<option value="cuffs">Cuffs</option>
-										<option value="zips">Zips</option>
-										<option value="button">Button</option>
-										<option value="brand_tag">Brand Tag</option>
-										<option value="thread">Thread</option>
+									<label >Select Material</label>
+									<select class="form-control" required name="material"  id="m1">
+
+										<c:forEach items="${material}" var="v">
+											<option value="${v.getName()}">${v.getName()}</option>
+										</c:forEach>
 									</select>
 								</div>
 							</div>
@@ -57,12 +51,12 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Quantity</label>
-									<input type="number" class="form-control" required name="stock"> </div>
+									<input type="number" min="10" max="10000" class="form-control" required name="stock"> </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 									<label>Price</label>
-									<input type="text" class="form-control" placeholder="Price Per Piece" required name="price"> </div>
+									<input type="number" min="10" max="10000" aria-placeholder="pice per piece" class="form-control" placeholder="Price Per Piece" required name="price"> </div>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary buttonedit1">ADD</button>

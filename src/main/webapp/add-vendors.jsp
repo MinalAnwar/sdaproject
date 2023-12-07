@@ -59,7 +59,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Rating</label>
-                                    <input type="number" class="form-control" name="rating" required>
+                                    <input type="number" min="0" max="5" class="form-control" name="rating" required>
 								</div>
                             </div>
 

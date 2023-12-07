@@ -1,7 +1,6 @@
 package com.erp.control;
 
-import com.erp.entity.Admin;
-
+import com.erp.entity.Manager;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,12 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-@WebServlet(name = "deleteProductControl", value = "/productdelete")
-public class deleteProductControl extends HttpServlet {
+
+@WebServlet(name = "deleteRatingController", value = "/deleteRating")
+public class deleteRatingController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        int productid = Integer.parseInt(request.getParameter("productID"));
-        Admin user = new Admin();
-        boolean deletionCheck = user.deleteInventory(productid,"product");
+        System.out.println("inside controller");
+        int empid = Integer.parseInt(request.getParameter("empID"));
+        int managerId= Integer.parseInt(request.getParameter("managerID"));
+        Manager user = new Manager();
+        boolean deletionCheck = user.deleteRating(empid,managerId);
         if (deletionCheck)
             response.sendRedirect(request.getContextPath() + "/all-products.jsp");
         else {
@@ -24,4 +26,5 @@ public class deleteProductControl extends HttpServlet {
             view.forward(request, response);
         }
     }
+
 }

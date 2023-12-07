@@ -52,7 +52,7 @@
                     <li class="submenu"> <a href="#"><i class="fa-solid fa-bars"></i></fa-solid><span>Products</span> <span class="menu-arrow"></span></a>
                         <ul class="submenu_class" style="display: none;">
                             <li><a href="all-products.jsp">All Products </a></li>
-                            <li><a href="add-product.jsp"> Add Product </a></li>
+                            <li><a href="add-product"> Add Product </a></li>
                         </ul>
                     </li>
                     </c:when>
@@ -63,7 +63,7 @@
                     <li class="submenu"> <a href="#"><i class="fas fa-suitcase"></i> <span>Materials</span> <span class="menu-arrow"></span></a>
                         <ul class="submenu_class" style="display: none;">
                             <li><a href="all-materials.jsp"> All Materials </a></li>
-                            <li><a href="add-material.jsp"> Add Material </a></li>
+                            <li><a href="add-material"> Add Material </a></li>
 
                         </ul>
                     </li>
@@ -85,8 +85,8 @@
                         <c:when test="${designation.equalsIgnoreCase('Admin')}">
                             <li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Quotations</span> <span class="menu-arrow"></span></a>
                                 <ul class="submenu_class" style="display: none;">
-                                    <li><a href="add-quotation"> Add Quotations </a></li>
                                     <li><a href="all-quotation.jsp"> All Quotations </a></li>
+                                    <li><a href="add-quotation.jsp"> Add Quotations </a></li>
 
                                 </ul>
                             </li>
@@ -97,7 +97,7 @@
                     <c:when test="${designation.equalsIgnoreCase('Manager')}">
                         <li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Quotations</span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="add-quotation.html"> Add Quotations </a></li>
+                                <li><a href="add-quotation.jsp"> Add Quotations </a></li>
                             </ul>
                         </li>
                     </c:when>
@@ -105,8 +105,8 @@
 
                     <c:choose>
                         <c:when test="${designation.equalsIgnoreCase('Admin')||designation.equalsIgnoreCase('Manager')}">
-                        <li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Vendors</span> <span class="menu-arrow"></span></a>
-                        <ul class="submenu_class" style="display: none;">
+                            <li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span>Vendor</span> <span class="menu-arrow"></span></a>
+                                <ul class="submenu_class" style="display: none;">
                             <li><a href="all-vendors.jsp"> All Vendors </a></li>
                             <li><a href="add-vendors.jsp"> Add Vendors </a></li>
 
@@ -134,8 +134,8 @@
                         <c:when test="${designation.equalsIgnoreCase('Quality anaylist')||designation.equalsIgnoreCase('Admin')}">
                         <li class="submenu"> <a href="#"><i class="fa-solid fa-star"></i><span>Quality</span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="report.html">Quality Report</a></li>
-                                <li><a href="rate-product.html">Rate product</a></li>
+                                <li><a href="report.jsp">Quality Report</a></li>
+                                <li><a href="add-rating.jsp">Rate product</a></li>
                             </ul>
                         </li>
                         </c:when>
