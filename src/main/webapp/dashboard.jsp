@@ -80,8 +80,8 @@
 							<div class="card-body">
 								<div class="dash-widget-header">
 									<div>
-										<h3 class="card_widget_header">${dashboardInfo.get("pendingOrders")}</h3>
-										<h6 class="text-muted">Pending Orders</h6> </div>
+										<h3 class="card_widget_header">${estimatedItems}</h3>
+										<h6 class="text-muted">Projected Material's</h6> </div>
 									<div class="ml-auto mt-md-3 mt-lg-0"> <span class="opacity-7 text-muted"><i class="fa-regular fa-clock fa-2x"></i></span> </div>
 								</div>
 							</div>

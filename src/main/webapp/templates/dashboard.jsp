@@ -85,7 +85,7 @@
                         <c:when test="${designation.equalsIgnoreCase('Admin')}">
                             <li class="submenu"> <a href="#"><i class="fa fa-industry"></i> <span>Quotations</span> <span class="menu-arrow"></span></a>
                                 <ul class="submenu_class" style="display: none;">
-                                    <li><a href="all-quotation.jsp"> All Quotations </a></li>
+                                    <li><a href="quotation"> All Quotations </a></li>
                                     <li><a href="add-quotation.jsp"> Add Quotations </a></li>
 
                                 </ul>

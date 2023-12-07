@@ -1,7 +1,6 @@
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="com.erp.entity.Admin" %>
-<%@ page import="com.erp.entity.Manager" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,32 +114,38 @@
 										</tr>
 										</thead>
 										<tbody>
-										<%
-											Manager user = new Manager();
-											ResultSet result = user.viewQuotation();
-											try {
-												while (result.next()) {
-										%>
+										<c:forEach items="${quotations}" var="q">
 										<tr>
-											<td><%= result.getString("name") %></td>
-											<td><%= result.getString("orderDate") %></td>
-											<td><%= result.getString("oneName") %></td>
-											<td><%= result.getInt("pOneQuantity") %></td>
-											<td><%= result.getInt("pOnePrice") %></td>
-											<td><%= result.getString("twoName") %></td>
-											<td><%= result.getInt("pTwoQuantity") %></td>
-											<td><%= result.getInt("pTwoPrice") %></td>
-											<td><%= result.getString("threeName") %></td>
-											<td><%= result.getInt("pThreeQuantity") %></td>
-											<td><%= result.getInt("pThreePrice") %></td>
-											<td><%= result.getInt("Total") %></td>
+											<td>${q.getVendorName()}</td>
+											<td>${q.getOrderDate()}</td>
+											<td>${q.getMaterial1name()}</td>
+											<td>${q.getQuantity1()}</td>
+											<td>${q.getPrice1()}</td>
+											<td>${q.getMaterial2name()}</td>
+											<td>${q.getQuantity2()}</td>
+											<td>${q.getPrice2()}</td>
+											<td>${q.getMaterial3name()}</td>
+											<td>${q.getQuantity3()}</td>
+											<td>${q.getPrice3()}</td>
+											<td>${q.getTotal()}</td>
 											<td>
-												<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>
-												<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>
-												<a class="delete" title="Delete" data-target="#delete_asset" ><i class="material-icons">&#xE872;</i></a>
-												<a class="check" title="Check"  data-target="#check_asset" data-p1-name="<%= result.getString("oneName") %>" data-toggle="modal"><i class="fa-solid fa-check"></i></a>
-												<%
+<%--												<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>--%>
+<%--												<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>--%>
+												<a class="delete" title="Delete" href="quotation?id=${q.getId()}" data-target="#delete_asset" ><i class="material-icons">&#xE872;</i></a>
+												<form action="quotation" method="post">
+													<input type="hidden" name="id" value="${q.getId()}">
+													<input type="hidden" name="p1id" value="${q.getMaterial1()}">
+													<input type="hidden" name="p2id" value="${q.getMaterial2()}">
+													<input type="hidden" name="p3id" value="${q.getMaterial3()}">
+													<input type="hidden" name="p1quantity" value="${q.getQuantity1()}">
+													<input type="hidden" name="p2quantity" value="${q.getQuantity2()}">
+													<input type="hidden" name="p3quantity" value="${q.getQuantity3()}">
+													<input type="hidden" name="totalPrice" value="${q.getTotal()}">
+													<input type="hidden" name="totalQuantity" value="${q.getQuantity1() + q.getQuantity2() + q.getQuantity3()}">
+													<button class="check" title="Check" type="submit" data-target="#check_asset" data-toggle="modal"><i class="fa-solid fa-check"></i></button>
+												</form>
 
+												<%
 													Boolean isValid = (Boolean) request.getAttribute("valid");
 													if (isValid != null && !isValid) {
 												%>
@@ -150,13 +155,7 @@
 												%>
 											</td>
 										</tr>
-										<%
-												}
-											} catch (Exception e) {
-												throw new RuntimeException(e);
-											}
-										%>
-
+										</c:forEach>
 										</tbody>
 									</table>
 									<style>

@@ -35,8 +35,6 @@ public class dashboardController extends HttpServlet {
         session.setAttribute("estimatedOrder", estimatedOrders);
         session.setAttribute("estimatedProfit", estimatedProfit);
         session.setAttribute("graphStats", graphStats);
-        System.out.println(graphStats.get("Orders"));
-        resp.sendRedirect("dashboard.jsp");
 
         // Get a List of vendor from DB to load all material in session in first page
             InventoryDao getRawMaterial = new InventoryDao();
@@ -46,5 +44,12 @@ public class dashboardController extends HttpServlet {
             VendorDao vendorDao = new VendorDao();
             List<Vendor> vendors = vendorDao.getAllVendors();
             session.setAttribute("vendors", vendors);
+
+
+        Map<String, List<Integer>> requirement = system.getRequirements();
+        int estimatedItems = system.LinearRegression(requirement.get("Years"), requirement.get("quantity"), 2024.0);
+        session.setAttribute("estimatedItems", estimatedItems);
+        resp.sendRedirect("dashboard.jsp");
+
     }
 }

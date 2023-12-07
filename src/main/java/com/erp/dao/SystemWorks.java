@@ -58,6 +58,31 @@ public class SystemWorks {
         return stats;
     }
 
+    public Map<String, List<Integer>> getRequirements(){
+        Map<String, List<Integer>> requirement = new HashMap<>();
+        List<Integer> Years = new ArrayList<>();
+        List<Integer> Items = new ArrayList<>();
+        String query = "select YEAR(orderDate) as `Years`, SUM(totalQuantity) as `quantity`\n" +
+                "                from materialOrders \n" +
+                "                group by `Years`\n";
+
+        try {
+            Connection connection = new Database().getConnection();
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                Years.add(resultSet.getInt("Years"));
+                Items.add(resultSet.getInt("quantity"));
+            }
+            requirement.put("Years", Years);
+            requirement.put("quantity", Items);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return requirement;
+    }
+
+
     public Map<String, Object> getDashboardInfo(){
         Map<String, Object> info = new HashMap<>(); // get all the info needed
         String query = "select \n" +
